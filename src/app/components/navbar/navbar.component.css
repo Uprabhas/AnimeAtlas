@@ -17,6 +17,7 @@
 
 .header-list{
     display: inline-block;
+    cursor: pointer;
 }
 
 .gif{
