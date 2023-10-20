@@ -1,1 +1,32 @@
-<p>character works!</p>
+<div class="section">
+    <div class="main">
+        <div class="row">
+            <div class="col-md-2 mb-1" *ngFor="let item of characterdata">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="img">
+                                <img src="{{item.data[0].character.images.jpg.image_url}}" alt="image">
+                            </div>
+
+                            <div class="detail">
+                                <label for="">{{item.data[0].character.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="main">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card" >
+                    <div class="card-body">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

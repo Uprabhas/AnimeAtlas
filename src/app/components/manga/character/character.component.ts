@@ -18,7 +18,7 @@ export class CharacterComponent implements OnInit{
   mangadetail(){
     let mal_id = this.activatedrouter.snapshot.paramMap.get("mal_id")
     console.log(mal_id)
-    mal_id && this.api.mangadetail(mal_id).subscribe((res)=>{this.characterdata=res,console.log(this.characterdata)})
+    mal_id && this.api.mangacharacter(mal_id).subscribe((res)=>{this.characterdata=res,console.log(this.characterdata)})
   }
 
 }
