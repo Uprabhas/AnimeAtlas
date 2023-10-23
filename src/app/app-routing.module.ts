@@ -10,6 +10,7 @@ import { AnimeCharactersComponent } from './components/anime/anime-characters/an
 import { AnimeVieosComponent } from './components/anime/anime-vieos/anime-vieos.component';
 import { MangadetailComponent } from './components/manga/mangadetail/mangadetail.component';
 import { CharacterComponent } from './components/manga/character/character.component';
+import { SearchanimeComponent } from './components/anime/searchanime/searchanime.component';
 
 const routes: Routes = [
   {path:'',component:SectionComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path:'anime-characters/:mal_id',component:AnimeCharactersComponent },
   { path:'anime-videos/:mal_id',component:AnimeVieosComponent },
   {path:'manga-in-detail/:mal_id',component:MangadetailComponent},
-  {path:'manga-characters/:mal_id',component:CharacterComponent}
+  {path:'manga-characters/:mal_id',component:CharacterComponent},
+  // {path:'searchanime/:title',component:SearchanimeComponent}
   
 ];
 

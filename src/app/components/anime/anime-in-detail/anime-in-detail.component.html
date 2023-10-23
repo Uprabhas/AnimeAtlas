@@ -5,7 +5,8 @@
                 <div class="row">
                     <div class="col-md-5">
                         <a><img class="img"
-                                src="{{detailanime.data.images.jpg.large_image_url}}" alt=""></a>
+                                src="{{detailanime.data.images.jpg.large_image_url}}"
+                                alt></a>
                     </div>
                     <div class="col-md-7">
                         <h2>{{detailanime.data.titles[0].title}}</h2>
@@ -24,8 +25,19 @@
                                     <li class="content-list">status:{{detailanime.data.status}}</li>
                                     <li class="content-list">duration:{{detailanime.data.duration}}</li>
 
-                                    <li class="content-list" routerLink="/anime-characters/{{detailanime.data.mal_id}}"><h4 style="color: blue;cursor:pointer">click to view Characters</h4></li>
-
+                                    <li class="content-list"
+                                        routerLink="/anime-characters/{{detailanime.data.mal_id}}"><h4
+                                            style="color: blue;cursor:pointer">click
+                                            to view Characters</h4></li>
+                                    <li class="content-list">external-source: <a
+                                            target="_blank"
+                                            href="{{detailanime.data.external[0].url}}">link1</a>,<a
+                                            target="_blank"
+                                            href="{{detailanime.data.external[1].url}}">link2</a>,<a
+                                            target="_blank"
+                                            href="{{detailanime.data.external[2].url}}">link3</a>,<a
+                                            target="_blank"
+                                            href="{{detailanime.data.external[3].url}}">link4</a></li>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -36,8 +48,11 @@
                                     <li class="content-list">genres:{{detailanime.data.genres[0].name}},
                                         {{detailanime.data.genres[1].name}},{{detailanime.data.genres[2].name}}.
                                     </li>
-
-                                    <li class="content-list" routerLink="/anime-videos/{{detailanime.data.mal_id}}"><a style="color: blue;">Trailer and Episodes</a></li>
+                                    <!-- <li class="content-list">streaming: <a target="_blank" href="{{detailanime.data.streaming[0].url}}">video1</a>,<a target="_blank" href="{{detailanime.data.streaming[1].url}}">video2</a>,<a target="_blank" href="{{detailanime.data.streaming[2].url}}">video3</a>,<a target="_blank" href="{{detailanime.data.streaming[3].url}}">video4</a></li> -->
+                                    <li class="content-list"
+                                        routerLink="/anime-videos/{{detailanime.data.mal_id}}"><a
+                                            style="color: blue;">Trailer and
+                                            Episodes</a></li>
                                 </div>
                             </div>
                         </div>
@@ -47,12 +62,17 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-right">
-                <div class="row">
-                    <div class="card-body">
-                        <div class="box" *ngFor="let item of recommadation.data">
-                            <a><img (click)="getrecommdationanime()" src="{{item.entry.images.jpg.small_image_url}}" alt="image"></a>
-                            <label for="">{{item.entry.title}}</label>
+            <div class="top-div">
+                <div class="card card-right">
+                    <div class="row">
+                        <div class="card-body">
+                            <div class="box"
+                                *ngFor="let item of recommadation.data">
+                                <a><img (click)="getrecommdationanime()"
+                                        src="{{item.entry.images.jpg.small_image_url}}"
+                                        alt="image"></a>
+                                <label>{{item.entry.title}}</label>
+                            </div>
                         </div>
                     </div>
                 </div>

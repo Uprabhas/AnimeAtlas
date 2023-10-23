@@ -65,7 +65,7 @@
 }
 
 .search{
-    margin-left: 35%;
+    margin-left: 31%;
     margin-top: -25px;
     position: absolute;
     background-color: aliceblue;
@@ -76,4 +76,10 @@
     width: 30%;
     /* top: 50%; */
     z-index: 99;
+}
+.btn{
+    position: absolute;
+    z-index: 99;
+    margin-top: -25px;
+    margin-left: 61%;
 }

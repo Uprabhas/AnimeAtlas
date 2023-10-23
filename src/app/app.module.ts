@@ -17,6 +17,9 @@ import { AnimeCharactersComponent } from './components/anime/anime-characters/an
 import { AnimeVieosComponent } from './components/anime/anime-vieos/anime-vieos.component';
 import { MangadetailComponent } from './components/manga/mangadetail/mangadetail.component';
 import { CharacterComponent } from './components/manga/character/character.component';
+import { SearchanimeComponent } from './components/anime/searchanime/searchanime.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,13 +35,16 @@ import { CharacterComponent } from './components/manga/character/character.compo
     AnimeCharactersComponent,
     AnimeVieosComponent,
     MangadetailComponent,
-    CharacterComponent
+    CharacterComponent,
+    SearchanimeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

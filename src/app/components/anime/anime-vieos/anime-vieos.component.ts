@@ -9,10 +9,13 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AnimeVieosComponent implements OnInit {
   videosdata: any;
+  video:any|undefined;
 
   constructor (private api :ApiService,private activatedrouter:ActivatedRoute,private router:Router){}
   ngOnInit(): void {
     this.animevideos()
+    this.video=this.videosdata?.promo[0]?.trailer?.embed_url?.split('?')[0]
+    console.log(this.video)
     
   }
 

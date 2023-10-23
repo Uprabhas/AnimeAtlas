@@ -1,13 +1,13 @@
 <div class="section">
     <header style="color: white;margin:auto">
-        <h1 style="margin-left: 45%;" >Top Animes</h1>
+        <h1 style="margin-left: 45%;" >search result</h1>
     </header>
     <div class="main">
         <div class="row">
-            <div class="col-md-2 mb-1" *ngFor="let item of Topanime.data">
-                <div class="card">
+            <div class="col-md-2 mb-1" *ngFor="let item of searchanime.data">
+                <div class="card" >
                     <div class="card-body">
-                        <a routerLink="/anime-in-detail/{{item.mal_id}}"><img src="{{item.images.jpg.image_url}}" alt=""></a>
+                        <a (click)="getTop(item.mal_id)" routerLink="/anime-in-detail/{{item.mal_id}}"><img src="{{item.images.jpg.image_url}}" alt=""></a>
                         <label for="">{{item.title}}</label>
                     </div>
                 </div>

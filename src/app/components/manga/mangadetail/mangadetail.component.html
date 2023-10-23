@@ -4,56 +4,67 @@
             <div class="card card-left">
                 <div class="row">
                     <div class="col-md-5">
-                        <a ><img class="img"
-                                src="{{detaildata.data.images.jpg.large_image_url}}" alt=""></a>
+                        <a><img class="img"
+                                src="{{detaildata.images.jpg.large_image_url}}"
+                                alt></a>
                     </div>
                     <div class="col-md-7">
-                        <h2>{{detaildata.data.titles[0].title}}</h2>
+                        <h2>{{detaildata.titles[0].title}}</h2>
                         <ul>
                             <li class="list-item">TV</li>
-                            <li class="list-item">{{detaildata.data.rating}}</li>
+                            <li class="list-item">{{detaildata.rank}}</li>
                             <li class="list-item">HD</li>
-                            <li class="list-item">{{detaildata.data.episodes}}</li>
+                            <li class="list-item">{{detaildata.episodes}}</li>
                         </ul>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="content">
 
-                                    <li class="content-list">Type:{{detaildata.data.type}}</li>
-                                    <li class="content-list">Year:{{detaildata.data.year}}</li>
-                                    <li class="content-list">status:{{detaildata.data.status}}</li>
-                                    <li class="content-list">duration:{{detaildata.data.duration}}</li>
+                                    <li class="content-list">Type:{{detaildata.type}}</li>
+                                    <li class="content-list">Year:{{detaildata.published.from|date}}</li>
+                                    <li class="content-list">status:{{detaildata.status}}</li>
+                                    <!-- <li class="content-list">duration:{{detaildata.data.duration}}</li> -->
 
-                                    <li class="content-list" routerLink="/manga-characters/{{detaildata.data.mal_id}}"><h4 style="color: blue;cursor:pointer">click to view Characters</h4></li>
+                                    <li class="content-list"
+                                        routerLink="/manga-characters/{{detaildata.mal_id}}"><h4
+                                            style="color: blue;cursor:pointer">click
+                                            to view Characters</h4></li>
 
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="content">
-                                    <li class="content-list">Rating:{{detaildata.data.score}}</li>
-                                    <li class="content-list">producers:{{detaildata.data.producers[0].name}}</li>
-                                    <li class="content-list">studios:{{detaildata.data.studios[0].name}}</li>
-                                    <li class="content-list">genres:{{detaildata.data.genres[0].name}},
+                                    <li class="content-list">Rating:{{detaildata.score}}</li>
+                                    <li class="content-list">authors:{{authors}}</li>
+                                    <li class="content-list">studios:{{studios}}</li>
+                                    <!-- <li class="content-list">genres:{{detaildata.data.genres[0].name}},
                                         {{detaildata.data.genres[1].name}},{{detaildata.data.genres[2].name}}.
-                                    </li>
+                                    </li> -->
 
-                                    <li class="content-list" routerLink="/manga-characters/{{detaildata.data.mal_id}}"><a style="color: blue;">Trailer and Episodes</a></li>
+                                    <li class="content-list"
+                                        routerLink="/manga-characters/{{detaildata.mal_id}}"><a
+                                            style="color: blue;">Trailer and
+                                            Episodes</a></li>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-right">
-                <div class="row">
-                    <div class="card-body">
-                        <!-- <div class="box" *ngFor="let item of recommadation.data">
-                            <a><img (click)="getrecommdationanime()" src="{{item.entry.images.jpg.small_image_url}}" alt="image"></a>
-                            <label for="">{{item.entry.title}}</label>
-                        </div> -->
+            <div class="top-div">
+                <div class="card card-right">
+                    <div class="row">
+                        <div class="card-body">
+                            <div class="box"
+                                *ngFor="let item of recommdation.data">
+                                <a><img (click)="getrecommdationanime()"
+                                        src="{{item.entry.images.jpg.small_image_url}}"
+                                        alt="image"></a>
+                                <label>{{item.entry.title}}</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

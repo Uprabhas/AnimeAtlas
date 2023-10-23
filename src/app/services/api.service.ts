@@ -9,11 +9,11 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   // Anime
-  searchanime(name:any){
+  searchable(name:any){
     return this.http.get(`https://api.jikan.moe/v4/anime?q=${name}`)
   }
   topAnime(){
-    return this.http.get('https://api.jikan.moe/v4/top/anime');
+    return this.http.get('https://api.jikan.moe/v4/anime');
   }
   detailanime(id:any){
     return this.http.get(`https://api.jikan.moe/v4/anime/${id}/full`);
@@ -27,6 +27,8 @@ export class ApiService {
   animevideos(id:any){
     return this.http.get(`https://api.jikan.moe/v4/anime/${id}/videos`);
   }
+ 
+
 
 
 
@@ -44,6 +46,10 @@ export class ApiService {
 
   mangacharacter(id:any){
     return this.http.get(`https://api.jikan.moe/v4/manga/${id}/characters`)
+  }
+
+  mangarecommdation(id:any){
+    return this.http.get(`https://api.jikan.moe/v4/manga/${id}/recommendations`)
   }
 
 
