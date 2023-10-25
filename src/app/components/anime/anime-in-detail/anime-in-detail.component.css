@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+
 .main {
     padding: 20px;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
     background-blend-mode: multiply, multiply;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .card-left {
@@ -40,7 +44,6 @@
 .box {
     border-radius: 6px;
     background-image: linear-gradient(to right, #434343 0%, black 100%);
-    color: white;
     color: white;
     margin: 6px;
     padding: 4px;

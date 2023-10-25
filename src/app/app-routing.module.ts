@@ -12,6 +12,7 @@ import { MangadetailComponent } from './components/manga/mangadetail/mangadetail
 import { CharacterComponent } from './components/manga/character/character.component';
 import { SearchanimeComponent } from './components/anime/searchanime/searchanime.component';
 import { AnimeNewsComponent } from './components/anime/anime-news/anime-news.component';
+import { WatchlistComponent } from './components/anime/watchlist/watchlist.component';
 
 const routes: Routes = [
   {path:'',component:SectionComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path:'anime-characters/:mal_id',component:AnimeCharactersComponent },
   { path:'anime-news/:mal_id',component:AnimeNewsComponent},
   { path:'anime-videos/:mal_id',component:AnimeVieosComponent },
+  {path:'watchlist-anime',component:WatchlistComponent},
   {path:'manga-in-detail/:mal_id',component:MangadetailComponent},
   {path:'manga-characters/:mal_id',component:CharacterComponent},
   // {path:'searchanime/:title',component:SearchanimeComponent}

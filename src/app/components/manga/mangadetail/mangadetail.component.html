@@ -13,8 +13,8 @@
                         <ul>
                             <li class="list-item">Manga</li>
                             <li class="list-item">{{detaildata.rank}}</li>
-                            <li class="list-item">HD</li>
-                            <li class="list-item">{{detaildata.episodes}}</li>
+                            <!-- <li class="list-item">HD</li> -->
+                            <!-- <li class="list-item">{{detaildata.episodes}}</li> -->
                         </ul>
                         <div class="row">
                             <div class="col-sm-6">
@@ -27,7 +27,7 @@
 
                                     <li class="content-list"
                                         routerLink="/manga-characters/{{detaildata.mal_id}}"><h4
-                                            style="color: blue;cursor:pointer">click
+                                            style="color: rgb(165, 165, 238);cursor:pointer">click
                                             to view Characters</h4></li>
 
                                 </div>
@@ -54,7 +54,7 @@
                         <div class="card-body">
                             <div class="box"
                                 *ngFor="let item of recommdation.data">
-                                <a><img (click)="getrecommdationanime()"
+                                <a (click)="getrecommdationmanga(item.entry.mal_id)"  ><img 
                                         src="{{item.entry.images.jpg.small_image_url}}"
                                         alt="image"></a>
                                 <label>{{item.entry.title}}</label>

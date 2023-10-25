@@ -46,6 +46,14 @@ export class MainPageComponent implements OnInit {
     
   }
 
+  addwatchlish(item:any){
+    this.api.Addwatchlistanime(item)
+  }
+
+  removewatchlist(item:any){
+    this.api.removewatchlistanime(item);
+  }
+
 
   // getTop(id:any) {
   //   console.log(id)

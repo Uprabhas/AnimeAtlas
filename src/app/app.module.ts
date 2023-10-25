@@ -24,6 +24,7 @@ import { SearchanimeComponent } from './components/anime/searchanime/searchanime
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AnimeNewsComponent } from './components/anime/anime-news/anime-news.component';
+import { WatchlistComponent } from './components/anime/watchlist/watchlist.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AnimeNewsComponent } from './components/anime/anime-news/anime-news.com
     MangadetailComponent,
     CharacterComponent,
     SearchanimeComponent,
-    AnimeNewsComponent
+    AnimeNewsComponent,
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,

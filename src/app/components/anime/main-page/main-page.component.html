@@ -6,7 +6,7 @@
                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
         </svg></button>
     <header style="color: white;margin:auto">
-        <h1 style="margin-left: 45%;padding-top:10px">Top Animes</h1>
+        <h1 style="margin-left: 45%;padding-top:10px">Top Animes</h1><button routerLink="/watchlist-anime">watchlist</button>
     </header>
     <div class="main" *ngIf="showtop">
         <div class="row">
@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <a routerLink="/anime-in-detail/{{item.mal_id}}"><img src="{{item.images.jpg.image_url}}"
                                 alt=""></a>
-                        <label for="">{{item.title}}</label>
+                        <label for="">{{item.title}}</label><button (click)="addwatchlish(item)">s</button><button (click)="removewatchlist(item)">ns</button>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <a routerLink="/anime-in-detail/{{element.mal_id}}"><img src="{{element.images.jpg.image_url}}"
                                 alt=""></a>
-                        <label for="">{{element.title}}</label>
+                        <label for="">{{element.title}}</label><button (click)="addwatchlish(element)">s</button><button (click)="removewatchlist(element)">ns</button>
                     </div>
                 </div>
             </div>
