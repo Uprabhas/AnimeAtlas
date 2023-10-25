@@ -7,7 +7,8 @@
             <div class="col-md-2 mb-1" *ngFor="let item of upcomingdata.data">
                 <div class="card">
                     <div class="card-body">
-                        <a  routerLink="/anime-in-detail/{{item.mal_id}}"><img src="{{item.images.jpg.image_url}}" alt=""></a>
+                        <!-- routerLink="/anime-in-detail/{{item.mal_id}} -->
+                        <a  ><img src="{{item.images.jpg.image_url}}" alt=""></a>
                         <label for="">{{item.title}}</label>
                     </div>
                 </div>

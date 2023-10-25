@@ -1,14 +1,12 @@
-<!-- <div class="card">
-    <video width="620" height="540" controls>
-        <source src="{{videosdata.data.promo[0].trailer.embed_url}}" type="video/mp4">
-      </video>
-      {{videosdata.data.promo[0].title}}
-
-</div> -->
-
-<div class="card">
-  
+<div class="container">
+  <mat-card>
+    <!-- <img src="{{videosdata.data.promo.trailer.images.image_url}}" alt=""> -->
+    <mat-card-content> {{videosdata.data.promo[0].title}}</mat-card-content>
+    <button mat-raised-button><a href="{{videosdata.data.promo[0].trailer.embed_url}}">Trailer</a></button>
+  </mat-card>
     
-   <label for=""> {{videosdata.promo?.title}}</label>
-
 </div>
+
+<!-- <iframe src="{{videosdata.data.promo[0].trailer.embed_url.split('?')[0]}}" frameborder="0"></iframe> -->
+
+<!-- {{videosdata.data.promo[0].trailer.embed_url.split('?')[0]}} -->

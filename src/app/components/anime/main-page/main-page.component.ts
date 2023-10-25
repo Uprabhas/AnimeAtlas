@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { NavbarComponent } from '../../navbar/navbar.component';
+
 
 @Component({
   selector: 'app-main-page',
@@ -11,26 +11,40 @@ import { NavbarComponent } from '../../navbar/navbar.component';
 })
 export class MainPageComponent implements OnInit {
   Topanime: any;
-  title: any;
+  title:any;
+  searchanimeresult: any;
+  showtop:boolean=true;
+  showsearch:boolean=false
+
   constructor(private api: ApiService, private router: Router) { }
   ngOnInit(): void {
+    if(this.title! == null){
     this.getTopanime();
-
+    }else{
+      this.searchanime(this.title)
+    }
   }
-  @ViewChild(NavbarComponent) navbar:any;
+
+   searchname(search:any){
+    this.title = search
+    console.log(search)
+    this.searchanime(search)
+    this.showtop=false;
+    this.showsearch=true;
+  }
+
+
 
   getTopanime() {
     this.api.topAnime().subscribe(
       (res: any) => { console.log(res), this.Topanime = res }, (err) => { console.log(err) })
-      this.title = this.navbar.title
-      console.log(this.title)
+     
   }
 
-  searchanime(){
-    this.api.searchable(this.title).subscribe((res) => { console.log(res) }, (err) => { console.log(err) })
-    this.title = this.navbar.title
+  searchanime(name:any){
+ this.api.searchable(name).subscribe((res:any) => {this.searchanimeresult=res.data ,console.log(res) }, (err) => { console.log(err) })
+    
   }
-
 
 
   // getTop(id:any) {

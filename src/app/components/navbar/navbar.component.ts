@@ -9,28 +9,9 @@ import { FormControl,FormGroup,FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  title!:string;
-  myform:FormGroup;
-
-  constructor(private api:ApiService,private router:Router,private fb:FormBuilder){
-    this.myform = this.fb.group({
-      name:''
-    })
-  }
 
   
 
-  Onsubmitform() {
 
-this.title=this.myform.value;
-console.log(this.title)
-this.api.searchable(this.myform.value)
-// this.router.navigateByUrl('/searchanime/{{this.title}}',)
-
-// location.reload()
-
-
-
-}
 
 }

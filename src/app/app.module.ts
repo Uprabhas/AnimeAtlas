@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http'
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +23,7 @@ import { CharacterComponent } from './components/manga/character/character.compo
 import { SearchanimeComponent } from './components/anime/searchanime/searchanime.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AnimeNewsComponent } from './components/anime/anime-news/anime-news.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AnimeVieosComponent,
     MangadetailComponent,
     CharacterComponent,
-    SearchanimeComponent
+    SearchanimeComponent,
+    AnimeNewsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

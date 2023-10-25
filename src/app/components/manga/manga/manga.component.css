@@ -1,9 +1,29 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
 
 .section{
     /* display: flex; */
     background-color: black;
     width: 100%;
+}
+
+.search{
+    position: absolute;
+    z-index: 99;
+    margin-top: -30px;
+    font-size: 20px;
+    margin-left: 36%;
+    font-family: young serif;
+    padding: 4px;
+    border: none;
+    border-radius: 6px;
+}
+
+.btn{
+    position: absolute;
+    z-index: 99;
+    margin-top: -30px;
+    margin-left: 58%;
+    padding: -6px;
 }
 
 .main{

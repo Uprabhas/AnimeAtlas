@@ -7,6 +7,9 @@
 .card-left {
     width: 100%;
     padding: 20px;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    color: white;
+    
 
 }
 
@@ -31,24 +34,42 @@
 
 .card-right {
     width: 100%;
+   
 }
 
 .box {
+    border-radius: 6px;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    color: white;
+    color: white;
     margin: 6px;
     padding: 4px;
+}
+
+.box img{
+    margin: 6px;
+    margin-left: 20px;
 }
 
 .top-div {
 
     width: 100%;
     overflow-y: scroll;
-    background: #c6dde88f;
+    background: #01141e8f;
     border: 2px solid #c6dde88f;
     border-radius: 10px;
-    height: 515px;
+    height: 500px;
 }
 
 .top-div::-webkit-scrollbar {
     width: 2px;
     background-color: #F5F5F5;
+}
+
+.title{
+    margin: 4px;
+    margin-left: 40px;
+}
+.btn:hover{
+    background-color: #434343;
 }

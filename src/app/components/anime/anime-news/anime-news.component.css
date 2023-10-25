@@ -1,0 +1,9 @@
+
+.section{
+    background-color: black;
+}
+
+.main{
+    display: flex;
+    width: 100%;
+}

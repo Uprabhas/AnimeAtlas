@@ -27,9 +27,9 @@
 
                                     <li class="content-list"
                                         routerLink="/anime-characters/{{detailanime.data.mal_id}}"><h4
-                                            style="color: blue;cursor:pointer">click
+                                            style="color: rgb(140, 140, 211);cursor:pointer">click
                                             to view Characters</h4></li>
-                                    <li class="content-list">external-source: <a
+                                    <li class="content-list">External-source: <a
                                             target="_blank"
                                             href="{{detailanime.data.external[0].url}}">link1</a>,<a
                                             target="_blank"
@@ -43,16 +43,15 @@
                             <div class="col-sm-6">
                                 <div class="content">
                                     <li class="content-list">Rating:{{detailanime.data.score}}</li>
-                                    <li class="content-list">producers:{{detailanime.data.producers[0].name}}</li>
-                                    <li class="content-list">studios:{{detailanime.data.studios[0].name}}</li>
-                                    <li class="content-list">genres:{{detailanime.data.genres[0].name}},
+                                    <!-- <li class="content-list">Producers:{{detailanime.data.producers[0].name}}</li>
+                                    <li class="content-list">Studios:{{detailanime.data.studios[0].name}}</li> -->
+                                    <!-- <li class="content-list">Genres:{{detailanime.data.genres[0].name}},
                                         {{detailanime.data.genres[1].name}},{{detailanime.data.genres[2].name}}.
-                                    </li>
+                                    </li> -->
                                     <!-- <li class="content-list">streaming: <a target="_blank" href="{{detailanime.data.streaming[0].url}}">video1</a>,<a target="_blank" href="{{detailanime.data.streaming[1].url}}">video2</a>,<a target="_blank" href="{{detailanime.data.streaming[2].url}}">video3</a>,<a target="_blank" href="{{detailanime.data.streaming[3].url}}">video4</a></li> -->
-                                    <li class="content-list"
-                                        routerLink="/anime-videos/{{detailanime.data.mal_id}}"><a
-                                            style="color: blue;">Trailer and
-                                            Episodes</a></li>
+                                    <li class="content-list" style="color: rgb(89, 89, 189);" routerLink="/anime-news/{{detailanime.data.mal_id}}"><a>News</a></li>
+                                    <li class="content-list"><button mat-raised-button class="btn "><a href="{{trailer.data.promo[0].trailer.embed_url}}">Trailer</a></button>
+                                        </li>
                                 </div>
                             </div>
                         </div>
@@ -68,10 +67,10 @@
                         <div class="card-body">
                             <div class="box"
                                 *ngFor="let item of recommadation.data">
-                                <a><img (click)="getrecommdationanime()"
+                                <a (click)="getRecomdation(item)"><img 
                                         src="{{item.entry.images.jpg.small_image_url}}"
                                         alt="image"></a>
-                                <label>{{item.entry.title}}</label>
+                                <label class="title">{{item.entry.title}}</label>
                             </div>
                         </div>
                     </div>
