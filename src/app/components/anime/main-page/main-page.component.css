@@ -19,12 +19,19 @@
     border-radius: 6px;
 }
 
-.btn{
+.btns{
     position: absolute;
     z-index: 99;
     margin-top: -30px;
     margin-left: 58%;
     padding: -6px;
+}
+
+.bwl{
+    position: absolute;
+    z-index: 99;
+   margin-left: 90%;
+   margin-top: -45px;
 }
 
 .main{

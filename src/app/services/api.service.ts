@@ -7,8 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
+ api:any=environment
 
-  api:any=environment
   public watchlistanime:any=[];
   public animelist:any=new BehaviorSubject<any>([])
 
@@ -16,25 +16,25 @@ export class ApiService {
 
   // Anime
   searchable(name:any): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+`anime?q=${name}`)
+    return this.http.get(`https://api.jikan.moe/v4/anime?q=${name}`)
   }
   topAnime(): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+"top/anime");
+    return this.http.get("https://api.jikan.moe/v4/anime");
   }
   detailanime(id:any): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+`anime/${id}/full`);
+    return this.http.get(`https://api.jikan.moe/v4/anime/${id}/full`);
   }
   animerecommdation(id:any): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+`anime/${id}/recommendations`)
+    return this.http.get(`https://api.jikan.moe/v4/anime/${id}/recommendations`)
   }
   animecharacters(id:any): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+`anime/${id}/characters`)
+    return this.http.get(`https://api.jikan.moe/v4/anime/${id}/characters`)
   }
   animenews(id:any): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+`anime/${id}/news`);
+    return this.http.get(`https://api.jikan.moe/v4/anime/${id}/news`);
   }
   animevideos(id:any): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+`anime/${id}/videos`);
+    return this.http.get(`https://api.jikan.moe/v4/anime/${id}/videos`);
   }
 
   Addwatchlistanime(data: any){
@@ -63,26 +63,26 @@ export class ApiService {
 
   // manga
   upcomming(): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+'seasons/upcoming');
+    return this.http.get('https://api.jikan.moe/v4/seasons/upcoming');
   }
   manga(): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+'top/manga');
+    return this.http.get('https://api.jikan.moe/v4/top/manga');
   }
 
   mangadetail(id:any): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+`manga/${id}/full`);
+    return this.http.get(`https://api.jikan.moe/v4/manga/${id}/full`);
   }
 
   mangacharacter(id:any): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+`manga/${id}/characters`)
+    return this.http.get(`https://api.jikan.moe/v4/manga/${id}/characters`)
   }
 
   mangarecommdation(id:any): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+`manga/${id}/recommendations`)
+    return this.http.get(`https://api.jikan.moe/v4/manga/${id}/recommendations`)
   }
 
   searchmanga(name:any): Observable <any>{
-    return this.http.get(this.api.Api_Endpoint+`manga?q=${name}`)
+    return this.http.get(`https://api.jikan.moe/v4/manga?q=${name}`)
   }
 
 

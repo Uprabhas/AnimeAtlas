@@ -7,7 +7,12 @@
     width: 100%;
 }
 
-
+.bwl{
+    position: absolute;
+    z-index: 99;
+   margin-left: 90%;
+   margin-top: -45px;
+}
 
 .main{
     padding: 20px;
@@ -40,4 +45,13 @@ border-radius: 8px;
 
 .center{
     color: aliceblue;
+}
+
+.cd{
+    justify-content: center;
+    width: 30%;
+    text-align: center;
+    height: 170px;
+    margin: auto;
+    margin-top: 15px;
 }

@@ -10,6 +10,8 @@
                     </div>
                     <div class="col-md-7">
                         <h2>{{detailanime.data.titles[0].title}}</h2>
+                        <button  class="btn add" (click)="addwatchlish(detailanime.data)" *ngIf="addList" ><mat-icon >bookmark_border</mat-icon></button>
+                        <button class="btn remove"  (click)="removewatchlist(detailanime.data)" *ngIf="removelist"><mat-icon>bookmark</mat-icon></button>
                         <ul>
                             <li class="list-item">TV</li>
                             <li class="list-item">{{detailanime.data.rating}}</li>
@@ -49,8 +51,8 @@
                                         {{detailanime.data.genres[1].name}},{{detailanime.data.genres[2].name}}.
                                     </li> -->
                                     <!-- <li class="content-list">streaming: <a target="_blank" href="{{detailanime.data.streaming[0].url}}">video1</a>,<a target="_blank" href="{{detailanime.data.streaming[1].url}}">video2</a>,<a target="_blank" href="{{detailanime.data.streaming[2].url}}">video3</a>,<a target="_blank" href="{{detailanime.data.streaming[3].url}}">video4</a></li> -->
-                                    <li class="content-list" style="color: rgb(89, 89, 189);" routerLink="/anime-news/{{detailanime.data.mal_id}}"><a>News</a></li>
-                                    <li class="content-list"><button mat-raised-button class="btn "><a href="{{trailer.data.promo[0].trailer.embed_url}}">Trailer</a></button>
+                                    <li class="content-list"  routerLink="/anime-news/{{detailanime.data.mal_id}}"><a>News</a></li>
+                                    <li class="content-list"><button mat-raised-button class="btn btnt" ><a style="color: white;text-decoration:none" href="{{trailer.data.promo[0].trailer.embed_url}}">Trailer</a></button>
                                         </li>
                                 </div>
                             </div>
@@ -67,10 +69,12 @@
                         <div class="card-body">
                             <div class="box"
                                 *ngFor="let item of recommadation.data">
-                                <a (click)="getRecomdation(item)"><img 
+                                <div (click)="getRecomdation(item)" class="">
+                                    <a ><img 
                                         src="{{item.entry.images.jpg.small_image_url}}"
                                         alt="image"></a>
                                 <label class="title">{{item.entry.title}}</label>
+                                </div>
                             </div>
                         </div>
                     </div>

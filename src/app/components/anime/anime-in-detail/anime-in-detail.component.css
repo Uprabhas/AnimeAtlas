@@ -73,6 +73,21 @@
     margin: 4px;
     margin-left: 40px;
 }
-.btn:hover{
+.btnt{
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+}
+.btnt:hover{
     background-color: #434343;
+}
+.add{
+    color: white;
+}
+.add:hover{
+    color: #434343;
+}
+.remove{
+    color: white;
+}
+.remove:hover{
+    color: #434343;
 }

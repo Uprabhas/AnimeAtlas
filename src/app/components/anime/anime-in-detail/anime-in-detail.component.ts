@@ -13,6 +13,8 @@ export class AnimeInDetailComponent implements OnInit{
   recommadation:any;
   trailer:any
   mal_id: any;
+  addList: boolean=true
+  removelist: boolean=false
 
   constructor(private api :ApiService,private activatedrouter:ActivatedRoute,private router:Router){}
 
@@ -24,7 +26,7 @@ export class AnimeInDetailComponent implements OnInit{
     this.mal_id = this.activatedrouter.snapshot.paramMap.get('mal_id')
     console.log("id",this.mal_id)
     this.mal_id && this.api.detailanime(this.mal_id).subscribe((res:any)=>{this.detailanime=res,console.log(this.detailanime)},(err)=>{console.log(err)});
-    this.mal_id && this.api.animerecommdation(this.mal_id).subscribe((res)=>{this.recommadation=res,console.log(res)},(err)=>{console.log(err)})
+    this.mal_id && this.api.animerecommdation(this.mal_id).subscribe((res:any)=>{this.recommadation=res,console.log(res)},(err)=>{console.log(err)})
     this.mal_id && this.api.animevideos(this.mal_id).subscribe((res)=>{this.trailer=res,console.log(res)},(err)=>{console.log(err)})
   }
 
@@ -53,6 +55,17 @@ export class AnimeInDetailComponent implements OnInit{
    
   }
   
+  addwatchlish(item:any){
+    this.api.Addwatchlistanime(item)
+    this.addList=false;
+    this.removelist=true
+  }
+
+  removewatchlist(item:any){
+    this.api.removewatchlistanime(item);
+    this.addList=true;
+    this.removelist=false;
+  }
 
 
 

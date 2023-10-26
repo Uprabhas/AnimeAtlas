@@ -13,6 +13,8 @@ export class MainPageComponent implements OnInit {
   Topanime: any;
   title:any;
   searchanimeresult: any;
+  addlist:boolean=true;
+  removelist:boolean=false
   showtop:boolean=true;
   showsearch:boolean=false
 
@@ -48,10 +50,14 @@ export class MainPageComponent implements OnInit {
 
   addwatchlish(item:any){
     this.api.Addwatchlistanime(item)
+    this.addlist=false;
+    this.removelist=true
   }
 
   removewatchlist(item:any){
     this.api.removewatchlistanime(item);
+    this.addlist=true;
+    this.removelist=false;
   }
 
 

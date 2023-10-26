@@ -1,31 +1,40 @@
-<div class="section" *ngIf="showanime.lenght!==0">
+<div class="section">
 
-    <header style="color: white;margin:auto">
-        <h1 style="margin-left: 45%;padding-top:10px">watchlist</h1><button (click)="remove_all()">remove All</button>
-    </header>
-    <div class="main">
-        <div class="row">
-            <div class="col-md-3 mb-1" *ngFor="let item of showanime">
+    
+        <header style="color: white;margin:auto">
+            <h1 style="margin-left: 45%;padding-top:10px">watchlist</h1>
+            <button mat-raised-button class="bwl" (click)="remove_all()">Remove All</button>
+        </header>
+
+        <div class="row" *ngIf="showanime.length !== 0">
+            <div class="col-md-2 mb-1" *ngFor="let item of showanime">
                 <div class="card">
                     <div class="card-body">
                         <a routerLink="/anime-in-detail/{{item.mal_id}}"><img src="{{item.images.jpg.image_url}}"
                                 alt=""></a>
-                        <label for="">{{item.title}}</label><button>s</button><button
-                            (click)="removewatchlist(item)">ns</button>
+                        <label for="">{{item.title}}</label><button class="btn"
+                            (click)="removewatchlist(item)"><mat-icon>bookmark</mat-icon></button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="section" *ngIf="showanime.lenght==0">
-    <div class="cd">
-        <div class="center">
-            <h3>your cart is empty</h3>
-            <h4>please add item</h4>
-            <button routerLink="/main-page" class="btn btn-dark" type="button">Home page</button>
+        <div *ngIf="showanime.length == 0">
+            <div class="cd">
+                <div class="center">
+                    <h3>your wishlist is empty</h3>
+                    <h4>please add </h4>
+                    <button routerLink="/main-page" class="btn btn-dark" type="button">Home page</button>
+                </div>
+            </div>
         </div>
-    </div>
+    
+
+
 
 </div>
+
+<!-- <div class="section" *ngIf="showanime.lenght==0">
+   
+
+</div> -->

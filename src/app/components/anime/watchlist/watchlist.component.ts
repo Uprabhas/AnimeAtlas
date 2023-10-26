@@ -7,14 +7,14 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./watchlist.component.css']
 })
 export class WatchlistComponent implements OnInit {
-  showanime: any=[]
+  showanime: any=[];
   constructor(private api:ApiService) { }
   ngOnInit(): void {
     this.listanime()
   }
 
   listanime(){
-    this.api.listanime().subscribe((res: any)=>{this.showanime=res,console.log(res)})
+    this.api.listanime().subscribe((res: any)=>{this.showanime=res,console.log(res.length)})
   }
 
   removewatchlist(item:any){

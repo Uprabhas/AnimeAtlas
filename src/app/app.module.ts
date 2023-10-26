@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http'
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AnimeNewsComponent } from './components/anime/anime-news/anime-news.component';
 import { WatchlistComponent } from './components/anime/watchlist/watchlist.component';
+import { DefaultPageComponent } from './components/default-page/default-page.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { WatchlistComponent } from './components/anime/watchlist/watchlist.compo
     CharacterComponent,
     SearchanimeComponent,
     AnimeNewsComponent,
-    WatchlistComponent
+    WatchlistComponent,
+    DefaultPageComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { WatchlistComponent } from './components/anime/watchlist/watchlist.compo
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
