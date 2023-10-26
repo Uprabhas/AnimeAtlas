@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AnimeInDetailComponent implements OnInit{
   detailanime:any;
   recommadation:any;
-  trailer:any
+  trailer!:any
   mal_id: any;
   addList: boolean=true
   removelist: boolean=false

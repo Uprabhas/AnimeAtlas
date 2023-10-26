@@ -5,14 +5,14 @@
                 <div class="row">
                     <div class="col-md-5">
                         <a><img class="img"
-                                src="{{detaildata.images.jpg.large_image_url}}"
+                                src="{{detaildata?.images.jpg.large_image_url}}"
                                 alt></a>
                     </div>
                     <div class="col-md-7">
-                        <h2>{{detaildata.titles[0].title}}</h2>
+                        <h2>{{detaildata?.titles[0].title}}</h2>
                         <ul>
                             <li class="list-item">Manga</li>
-                            <li class="list-item">{{detaildata.rank}}</li>
+                            <li class="list-item">{{detaildata?.rank}}</li>
                             <!-- <li class="list-item">HD</li> -->
                             <!-- <li class="list-item">{{detaildata.episodes}}</li> -->
                         </ul>
@@ -20,13 +20,13 @@
                             <div class="col-sm-6">
                                 <div class="content">
 
-                                    <li class="content-list">Type:{{detaildata.type}}</li>
-                                    <li class="content-list">Year:{{detaildata.published.from|date}}</li>
-                                    <li class="content-list">status:{{detaildata.status}}</li>
+                                    <li class="content-list">Type:{{detaildata?.type}}</li>
+                                    <li class="content-list">Year:{{detaildata?.published.from|date}}</li>
+                                    <li class="content-list">status:{{detaildata?.status}}</li>
                                     <!-- <li class="content-list">duration:{{detaildata.data.duration}}</li> -->
 
                                     <li class="content-list"
-                                        routerLink="/manga-characters/{{detaildata.mal_id}}"><h4
+                                        routerLink="/manga-characters/{{detaildata?.mal_id}}"><h4
                                             style="color: rgb(165, 165, 238);cursor:pointer">click
                                             to view Characters</h4></li>
 
@@ -34,8 +34,8 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="content">
-                                    <li class="content-list">Rating:{{detaildata.score}}</li>
-                                    <li class="content-list">authors:{{detaildata.authors[0].name}}</li>
+                                    <li class="content-list">Rating:{{detaildata?.score}}</li>
+                                    <li class="content-list">authors:{{detaildata?.authors[0].name}}</li>
                                     <!-- <li class="content-list">studios:{{detaildata.studios[0].name}}</li> -->
                                     <!-- <li class="content-list">other-souce: <a href="{{detaildata.data.external[0].url}}">link1</a></li> -->
 
@@ -53,7 +53,7 @@
                     <div class="row">
                         <div class="card-body">
                             <div class="box"
-                                *ngFor="let item of recommdation.data">
+                                *ngFor="let item of recommdation?.data">
                                 <a (click)="getrecommdationmanga(item.entry.mal_id)"  ><img 
                                         src="{{item.entry.images.jpg.small_image_url}}"
                                         alt="image"></a>

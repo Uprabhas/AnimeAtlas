@@ -7,7 +7,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./watchlist.component.css']
 })
 export class WatchlistComponent implements OnInit {
-  showanime: any=[];
+  showanime: any|undefined=[];
   constructor(private api:ApiService) { }
   ngOnInit(): void {
     this.listanime()

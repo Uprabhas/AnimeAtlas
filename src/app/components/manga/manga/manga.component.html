@@ -10,7 +10,7 @@
     </header>
     <div class="main" *ngIf="showtop">
         <div class="row">
-            <div class="col-md-2 mb-1" *ngFor="let item of mangadata.data">
+            <div class="col-md-2 mb-1" *ngFor="let item of mangadata?.data">
                 <div class="card">
                     <div class="card-body">
                         <a routerLink="/manga-in-detail/{{item.mal_id}}"><img src="{{item.images.jpg.image_url}}"

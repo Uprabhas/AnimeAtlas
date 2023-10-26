@@ -1,4 +1,5 @@
 export const environment = {
-    Api_Endpoint:"https://api.jikan.moe/v4/",
+    development: false,
+    Api_Endpoint:'https://api.jikan.moe/v4/'
 
 };
