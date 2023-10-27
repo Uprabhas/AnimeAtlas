@@ -1,5 +1,5 @@
 <div class="section">
-    <input class="search" type="text" #search placeholder="           search for anime" (blur)="search.value"><button
+    <input class="search" type="text" #search placeholder="           search for anime" (keyup)="searchname(search.value)"><button
         class="btn btn-warning btns" (click)="searchname(search.value)"><svg xmlns="http://www.w3.org/2000/svg" width="16"
             height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path
@@ -18,7 +18,8 @@
                     <div class="card-body">
                         <a routerLink="/anime-in-detail/{{item.mal_id}}"><img src="{{item.images.jpg.image_url}}"
                                 alt=""></a>
-                        <label for="">{{item.title}}</label><button  class="btn" (click)="addwatchlish(item)"><mat-icon >bookmark_border</mat-icon></button><button class="btn" (click)="removewatchlist(item)"><mat-icon>bookmark</mat-icon></button>
+                        <label for="">{{item.title}}</label><button  class="btn" (click)="addwatchlish(item)"><mat-icon >bookmark_border</mat-icon><label class="hides" >Save in wishlist</label></button>
+                        <button class="btn" (click)="removewatchlist(item)"><mat-icon>bookmark</mat-icon><label class="hider" >Remove </label></button>
                     </div>
                 </div>
             </div>
@@ -32,7 +33,8 @@
                     <div class="card-body">
                         <a routerLink="/anime-in-detail/{{element.mal_id}}"><img src="{{element.images.jpg.image_url}}"
                                 alt=""></a>
-                        <label for="">{{element.title}}</label><button class="btn" (click)="addwatchlish(element)"><mat-icon>bookmark_border</mat-icon></button><button class="btn" (click)="removewatchlist(element)"><mat-icon>bookmark</mat-icon></button>
+                        <label for="">{{element.title}}</label><button class="btn" (click)="addwatchlish(element)"><mat-icon>bookmark_border</mat-icon><label class="hides" >Save in wishlist</label></button>
+                        <button class="btn" (click)="removewatchlist(element)"><mat-icon>bookmark</mat-icon><label class="hider" >Remove </label></button>
                     </div>
                 </div>
             </div>

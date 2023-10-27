@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -23,9 +24,11 @@ export class MainPageComponent implements OnInit {
     if(this.title! == null){
     this.getTopanime();
     }else{
+      
       this.searchanime(this.title)
     }
   }
+
 
    searchname(search:any){
     this.title = search
@@ -44,6 +47,9 @@ export class MainPageComponent implements OnInit {
   }
 
   searchanime(name:any){
+    _.debounce(() =>{
+    console.log('bahubali');
+    },1000),
  this.api.searchable(name).subscribe((res:any) => {this.searchanimeresult=res.data ,console.log(res) }, (err) => { console.log(err) })
     
   }
@@ -61,10 +67,7 @@ export class MainPageComponent implements OnInit {
   }
 
 
-  // getTop(id:any) {
-  //   console.log(id)
-  //   this.api.detailanime(id);
-  // }
+
 
   
 

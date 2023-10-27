@@ -4,14 +4,19 @@
             <div class="card card-left">
                 <div class="row">
                     <div class="col-md-5">
-                        <a><img class="img"
-                                src="{{detailanime?.data.images.jpg.large_image_url}}"
-                                alt></a>
+                        <a><img class="img" src="{{detailanime?.data.images.jpg.large_image_url}}" alt></a>
                     </div>
                     <div class="col-md-7">
                         <h2>{{detailanime?.data.titles[0].title}}</h2>
-                        <button  class="btn add" (click)="addwatchlish(detailanime.data)" ><mat-icon >bookmark_border</mat-icon></button>
-                        <button class="btn remove"  (click)="removewatchlist(detailanime.data)" ><mat-icon>bookmark</mat-icon></button>
+                        <button class="btn add"
+                            (click)="addwatchlish(detailanime.data)"><mat-icon>bookmark_border</mat-icon><label
+                                class="hides">Save in wishlist</label></button>
+                        <button class="btn remove"
+                            (click)="removewatchlist(detailanime.data)"><mat-icon>bookmark</mat-icon><label
+                                class="hider">Remove to WishList</label></button>
+                        <br>
+
+
                         <ul>
                             <li class="list-item">TV</li>
                             <li class="list-item">{{detailanime?.data.rating}}</li>
@@ -24,22 +29,19 @@
 
                                     <li class="content-list">Type:{{detailanime?.data.type}}</li>
                                     <li class="content-list">Year:{{detailanime?.data.year}}</li>
-                                    <li class="content-list">status:{{detailanime?.data.status}}</li>
-                                    <li class="content-list">duration:{{detailanime?.data.duration}}</li>
+                                    <li class="content-list">Status:{{detailanime?.data.status}}</li>
+                                    <li class="content-list">Duration:{{detailanime?.data.duration}}</li>
 
                                     <li class="content-list"
-                                        routerLink="/anime-characters/{{detailanime?.data.mal_id}}"><h4
-                                            style="color: rgb(140, 140, 211);cursor:pointer">click
-                                            to view Characters</h4></li>
-                                    <li class="content-list">External-source: <a
-                                            target="_blank"
-                                            href="{{detailanime?.data.external[0].url}}">link1</a>,<a
-                                            target="_blank"
-                                            href="{{detailanime?.data.external[1].url}}">link2</a>,<a
-                                            target="_blank"
-                                            href="{{detailanime?.data.external[2].url}}">link3</a>,<a
-                                            target="_blank"
-                                            href="{{detailanime?.data.external[3].url}}">link4</a></li>
+                                        routerLink="/anime-characters/{{detailanime?.data.mal_id}}">
+                                        <h4 style="color: rgb(140, 140, 211);cursor:pointer">Click
+                                            to view Characters</h4>
+                                    </li>
+                                    <li class="content-list">Wiki: <a target="_blank"
+                                            href="{{detailanime?.data.external[0].url}}">Link1</a>,<a target="_blank"
+                                            href="{{detailanime?.data.external[1].url}}">Link2</a>,<a target="_blank"
+                                            href="{{detailanime?.data.external[2].url}}">Link3</a>,<a target="_blank"
+                                            href="{{detailanime?.data.external[3].url}}">Link4</a></li>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -51,9 +53,12 @@
                                         {{detailanime.data.genres[1].name}},{{detailanime.data.genres[2].name}}.
                                     </li> -->
                                     <!-- <li class="content-list">streaming: <a target="_blank" href="{{detailanime.data.streaming[0].url}}">video1</a>,<a target="_blank" href="{{detailanime.data.streaming[1].url}}">video2</a>,<a target="_blank" href="{{detailanime.data.streaming[2].url}}">video3</a>,<a target="_blank" href="{{detailanime.data.streaming[3].url}}">video4</a></li> -->
-                                    <li class="content-list" style="cursor: pointer;" routerLink="/anime-news/{{detailanime?.data.mal_id}}"><a>News</a></li>
-                                    <li class="content-list"><button mat-raised-button class="btn btnt" ><a style="color: white;text-decoration:none" href="{{trailer?.data?.promo[0]?.trailer?.embed_url}}">Trailer</a></button>
-                                        </li>
+                                    <li class="content-list" style="cursor: pointer;"
+                                        routerLink="/anime-news/{{detailanime?.data.mal_id}}"><a>News</a></li>
+                                    <li class="content-list"><button mat-raised-button class="btn btnt"><a
+                                                style="color: white;text-decoration:none"
+                                                href="{{trailer?.data?.promo[0]?.trailer?.embed_url}}">Trailer</a></button>
+                                    </li>
                                 </div>
                             </div>
                         </div>
@@ -63,17 +68,17 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="top-div">
-                <div class="card card-right">
+
+            <div class="card card-right">
+                <label class="header"><h3>Recommadation</h3></label>
+                <div class="top-div">
                     <div class="row">
                         <div class="card-body">
-                            <div class="box"
-                                *ngFor="let item of recommadation?.data">
+
+                            <div class="box" *ngFor="let item of recommadation?.data">
                                 <div (click)="getRecomdation(item)" class="">
-                                    <a ><img 
-                                        src="{{item?.entry.images.jpg.small_image_url}}"
-                                        alt="image"></a>
-                                <label class="title">{{item.entry.title}}</label>
+                                    <a><img src="{{item?.entry.images.jpg.small_image_url}}" alt="image"></a>
+                                    <label class="title">{{item.entry.title}}</label>
                                 </div>
                             </div>
                         </div>

@@ -62,3 +62,34 @@ width: 100%;
 height: 280px;  
 border-radius: 8px;
 }
+
+.hides{
+    padding: 5px;
+    position: absolute;
+    width: 200px;
+    height: 15px;
+    color: black;
+    display: none;  
+    margin-top: -10px;
+    margin-left: -70px;
+
+    }
+.btn:hover .hides{
+display:block;
+color: white;
+}
+.hider{
+    padding: 5px;
+    position: absolute;
+    margin-top: -10px;
+    width: 200px;
+    height: 15px;
+    color: black;
+    display: none;
+    margin-left: -60px;
+
+}
+.btn:hover .hider{
+    display: block;
+    color: white;
+}

@@ -27,6 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AnimeNewsComponent } from './components/anime/anime-news/anime-news.component';
 import { WatchlistComponent } from './components/anime/watchlist/watchlist.component';
 import { DefaultPageComponent } from './components/default-page/default-page.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { DefaultPageComponent } from './components/default-page/default-page.com
     ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    FontAwesomeModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
