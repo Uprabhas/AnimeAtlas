@@ -22,8 +22,8 @@ export class ApiService {
   searchable(name: any): Observable<any> {
     return this.http.get(environment.Api_Endpoint + `anime?q=${name}`)
   }
-  topAnime(): Observable<any> {
-    return this.http.get(environment.Api_Endpoint + "top/anime");
+  topAnime(page:any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `top/anime?page=${page}`);
   }
   detailanime(id: any): Observable<any> {
     return this.http.get(environment.Api_Endpoint + `anime/${id}/full`);

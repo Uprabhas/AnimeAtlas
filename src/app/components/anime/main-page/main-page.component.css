@@ -93,3 +93,12 @@ color: white;
     display: block;
     color: white;
 }
+
+.page{
+    color: white;
+    padding-bottom: 20px;
+}
+.listo{
+    list-style-type: none;
+    display: inline;
+}

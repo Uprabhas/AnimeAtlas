@@ -18,11 +18,12 @@ export class MainPageComponent implements OnInit {
   removelist: boolean = false
   showtop: boolean = true;
   showsearch: boolean = false
+  pageadd: any=1;
 
   constructor(private api: ApiService, private router: Router) { }
   ngOnInit(): void {
     if (this.title! == null) {
-      this.getTopanime();
+      this.getTopanime(this.pageadd);
     } else {
       this.searchanime(this.title)
 
@@ -40,8 +41,8 @@ export class MainPageComponent implements OnInit {
 
 
 
-  getTopanime() {
-    this.api.topAnime().subscribe(
+  getTopanime(pageno:any) {
+    this.api.topAnime(pageno).subscribe(
       (res: any) => { console.log(res), this.Topanime = res }, (err) => { console.log(err) })
 
   }
@@ -66,6 +67,17 @@ export class MainPageComponent implements OnInit {
   }
 
 
+  addpage(){
+    this.getTopanime(this.pageadd);
+    this.pageadd +=1
+    console.log(this.pageadd)
+  }
+
+  subpage(){
+    this.getTopanime(this.pageadd);
+    this.pageadd -=1
+    console.log(this.pageadd)
+  }
 
 
 
