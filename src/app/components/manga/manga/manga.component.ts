@@ -12,11 +12,12 @@ export class MangaComponent implements OnInit {
   showsearch: boolean=false
   showtop: boolean=true;
   title: any;
+  pageadd: any=1;
 
   constructor(private api :ApiService){}
   ngOnInit(): void {
     if(this.title==null){
-      this.manga()
+      this.manga(this.pageadd)
     }
     else{
       this.searchmanga(this.title)
@@ -30,12 +31,25 @@ export class MangaComponent implements OnInit {
     this.showsearch = true
   }
 
-  manga(){
-    this.api.manga().subscribe((res)=>{this.mangadata=res,console.log(res)},(err)=>{console.log(err)})
+  manga(page:any){
+    this.api.manga(page).subscribe((res)=>{this.mangadata=res,console.log(res)},(err)=>{console.log(err)})
   }
 
   searchmanga(search:any){
     this.api.searchmanga(search).subscribe((res:any)=>{this.searchdata = res.data,console.log(res)},(err)=>{console.log(err)})
   }
+
+  addpage(){
+    this.manga(this.pageadd);
+    this.pageadd +=1
+    console.log(this.pageadd)
+  }
+
+  subpage(){
+    this.manga(this.pageadd);
+    this.pageadd -=1
+    console.log(this.pageadd)
+  }
+
 
 }

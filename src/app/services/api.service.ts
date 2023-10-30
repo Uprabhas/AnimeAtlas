@@ -87,8 +87,8 @@ export class ApiService {
   upcomming(): Observable<any> {
     return this.http.get(environment.Api_Endpoint + 'seasons/upcoming');
   }
-  manga(): Observable<any> {
-    return this.http.get(environment.Api_Endpoint + 'top/manga');
+  manga(page:any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `top/manga?page=${page}`);
   }
 
   mangadetail(id: any): Observable<any> {
