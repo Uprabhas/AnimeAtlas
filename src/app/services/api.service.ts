@@ -2,87 +2,109 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { BehaviorSubject, Observable } from 'rxjs';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-//  api:any=environment
+  //  api:any=environment
 
-  public watchlistanime:any=[];
-  public animelist:any=new BehaviorSubject<any>([])
+  watchlistanime: any = [];
+  wishlistanime: any;
 
-  constructor(private http:HttpClient) { }
+  public animelist: any = new BehaviorSubject<any>([])
+
+
+  constructor(private http: HttpClient) { }
 
   // Anime
-  searchable(name:any): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+`anime?q=${name}`)
+  searchable(name: any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `anime?q=${name}`)
   }
-  topAnime(): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+"top/anime");
+  topAnime(): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + "top/anime");
   }
-  detailanime(id:any): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+`anime/${id}/full`);
+  detailanime(id: any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `anime/${id}/full`);
   }
-  animerecommdation(id:any): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+`anime/${id}/recommendations`)
+  animerecommdation(id: any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `anime/${id}/recommendations`)
   }
-  animecharacters(id:any): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+`anime/${id}/characters`)
+  animecharacters(id: any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `anime/${id}/characters`)
   }
-  animenews(id:any): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+`anime/${id}/news`);
+  animenews(id: any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `anime/${id}/news`);
   }
-  animevideos(id:any): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+`anime/${id}/videos`);
+  animevideos(id: any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `anime/${id}/videos`);
   }
 
-  Addwatchlistanime(data: any){
+
+  Addwatchlistanime(data: any) {
     this.watchlistanime.push(data);
-    this.animelist.next(this.watchlistanime)
-    console.log(this.watchlistanime)
+    this.wishlistanime = _.uniqBy(this.watchlistanime, 'mal_id');
+    // this.wishlistanime = unique
+    console.log(this.wishlistanime)
+    this.animelist.next(this.wishlistanime)
+    // console.log(this.watchlistanime)
+
+
+   
   }
 
-  removewatchlistanime(data:any){
-    this.watchlistanime.map((a:any,index:any)=>{
-      if(data.mal_id===a.mal_id){
-        this.watchlistanime.splice(index,1)
+  
+
+
+
+
+  removewatchlistanime(data: any) {
+    this.wishlistanime.map((a: any, index: any) => {
+      if (data.mal_id === a.mal_id) {
+        this.wishlistanime.splice(index, 1)
+      }
+    })
+    this.watchlistanime.map((a: any, index: any) => {
+      if (data.mal_id === a.mal_id) {
+        this.watchlistanime.splice(index, 1)
       }
     })
   }
 
-  listanime(){
+  listanime() {
     return this.animelist.asObservable();
   }
 
-  removeallitem(){
+  removeallitem() {
+    this.wishlistanime = [];
     this.watchlistanime=[];
-    this.animelist.next(this.watchlistanime);
+    this.animelist.next(this.wishlistanime);
   }
 
 
   // manga
-  upcomming(): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+'seasons/upcoming');
+  upcomming(): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + 'seasons/upcoming');
   }
-  manga(): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+'top/manga');
-  }
-
-  mangadetail(id:any): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+`manga/${id}/full`);
+  manga(): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + 'top/manga');
   }
 
-  mangacharacter(id:any): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+`manga/${id}/characters`)
+  mangadetail(id: any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `manga/${id}/full`);
   }
 
-  mangarecommdation(id:any): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+`manga/${id}/recommendations`)
+  mangacharacter(id: any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `manga/${id}/characters`)
   }
 
-  searchmanga(name:any): Observable <any>{
-    return this.http.get(environment.Api_Endpoint+`manga?q=${name}`)
+  mangarecommdation(id: any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `manga/${id}/recommendations`)
+  }
+
+  searchmanga(name: any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `manga?q=${name}`)
   }
 
 

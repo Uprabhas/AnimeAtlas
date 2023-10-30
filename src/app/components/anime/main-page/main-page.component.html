@@ -1,6 +1,8 @@
 <div class="section">
-    <input class="search" type="text" #search placeholder="           search for anime" (keyup)="searchname(search.value)"><button
-        class="btn btn-warning btns" (click)="searchname(search.value)"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+    <input class="search" type="text" #search placeholder="           search for anime" 
+    (keypress)="onsearch(search.value)">
+    <button class="btn btn-warning btns" (click)="onsearch(search.value)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16"
             height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path
                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -16,9 +18,9 @@
             <div class="col-md-2 mb-1" *ngFor="let item of Topanime?.data">
                 <div class="card">
                     <div class="card-body">
-                        <a routerLink="/anime-in-detail/{{item.mal_id}}"><img src="{{item.images.jpg.image_url}}"
-                                alt=""></a>
-                        <label for="">{{item.title}}</label><button  class="btn" (click)="addwatchlish(item)"><mat-icon >bookmark_border</mat-icon><label class="hides" >Save in wishlist</label></button>
+                        <a routerLink="/anime-in-detail/{{item.mal_id}}"><img src="{{item.images.jpg.image_url}}"alt=""></a>
+                        <label for="">{{item.title}}</label><br>
+                        <button  class="btn" (click)="addwatchlish(item)"><mat-icon >bookmark_border</mat-icon><label class="hides" >Save in wishlist</label></button>
                         <button class="btn" (click)="removewatchlist(item)"><mat-icon>bookmark</mat-icon><label class="hider" >Remove </label></button>
                     </div>
                 </div>
@@ -33,7 +35,8 @@
                     <div class="card-body">
                         <a routerLink="/anime-in-detail/{{element.mal_id}}"><img src="{{element.images.jpg.image_url}}"
                                 alt=""></a>
-                        <label for="">{{element.title}}</label><button class="btn" (click)="addwatchlish(element)"><mat-icon>bookmark_border</mat-icon><label class="hides" >Save in wishlist</label></button>
+                        <label for="">{{element.title}}</label><br>
+                        <button class="btn" (click)="addwatchlish(element)"><mat-icon>bookmark_border</mat-icon><label class="hides" >Save in wishlist</label></button>
                         <button class="btn" (click)="removewatchlist(element)"><mat-icon>bookmark</mat-icon><label class="hider" >Remove </label></button>
                     </div>
                 </div>

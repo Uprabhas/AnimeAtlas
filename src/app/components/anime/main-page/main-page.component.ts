@@ -12,30 +12,30 @@ import * as _ from 'lodash';
 })
 export class MainPageComponent implements OnInit {
   Topanime: any;
-  title:any;
+  title: any;
   searchanimeresult: any;
-  addlist:boolean=true;
-  removelist:boolean=false
-  showtop:boolean=true;
-  showsearch:boolean=false
+  addlist: boolean = true;
+  removelist: boolean = false
+  showtop: boolean = true;
+  showsearch: boolean = false
 
   constructor(private api: ApiService, private router: Router) { }
   ngOnInit(): void {
-    if(this.title! == null){
-    this.getTopanime();
-    }else{
-      
+    if (this.title! == null) {
+      this.getTopanime();
+    } else {
       this.searchanime(this.title)
+
     }
   }
 
 
-   searchname(search:any){
+  onsearch(search: any) {
     this.title = search
     console.log(search)
     this.searchanime(search)
-    this.showtop=false;
-    this.showsearch=true;
+    this.showtop = false;
+    this.showsearch = true;
   }
 
 
@@ -43,33 +43,32 @@ export class MainPageComponent implements OnInit {
   getTopanime() {
     this.api.topAnime().subscribe(
       (res: any) => { console.log(res), this.Topanime = res }, (err) => { console.log(err) })
-     
+
   }
 
-  searchanime(name:any){
-    _.debounce(() =>{
-    console.log('bahubali');
-    },1000),
- this.api.searchable(name).subscribe((res:any) => {this.searchanimeresult=res.data ,console.log(res) }, (err) => { console.log(err) })
-    
+  searchanime(name: any) {
+   
+    setTimeout(() => {
+      this.api.searchable(name).subscribe((res: any) => { this.searchanimeresult = res.data, console.log(res) }, (err) => { console.log(err) })
+    }, 1000);
   }
 
-  addwatchlish(item:any){
+  addwatchlish(item: any) {
     this.api.Addwatchlistanime(item)
-    this.addlist=false;
-    this.removelist=true
+    this.addlist = false;
+    this.removelist = true
   }
 
-  removewatchlist(item:any){
+  removewatchlist(item: any) {
     this.api.removewatchlistanime(item);
-    this.addlist=true;
-    this.removelist=false;
+    this.addlist = true;
+    this.removelist = false;
   }
 
 
 
 
-  
+
 
 
 }

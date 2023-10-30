@@ -48,6 +48,7 @@
     color: white;
     margin: 6px;
     padding: 4px;
+    cursor: pointer;
 }
 
 .box img{
@@ -67,12 +68,13 @@
 
 .top-div::-webkit-scrollbar {
     width: 2px;
-    background-color: #F5F5F5;
+    background-color: #01141e8f;
 }
 
 .title{
     margin: 4px;
     margin-left: 40px;
+    cursor: pointer;
 }
 .btnt{
     background-image: linear-gradient(to right, #434343 0%, black 100%);
@@ -119,7 +121,7 @@ color: white;
 
 .header{
     text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:'Courier New', Courier, monospace;
     font-size: 25px;
     color: white;
     padding-top: 5px;

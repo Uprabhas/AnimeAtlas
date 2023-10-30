@@ -30,7 +30,13 @@
     
 }
 
-
+.title{
+    margin: 8px auto;
+    margin-left: 40%;
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    color: aliceblue;
+}
 
 .box{
     margin: 8px;
