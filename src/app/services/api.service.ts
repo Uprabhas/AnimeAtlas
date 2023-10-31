@@ -20,7 +20,7 @@ export class ApiService {
 
   // Anime
   searchable(name: any): Observable<any> {
-    return this.http.get(environment.Api_Endpoint + `anime?q=${name}`)
+    return this.http.get(environment.Api_Endpoint + `anime?q=${name}&limit=24`)
   }
   topAnime(page:any): Observable<any> {
     return this.http.get(environment.Api_Endpoint + `top/anime?page=${page}&limit=24`);
@@ -104,7 +104,7 @@ export class ApiService {
   }
 
   searchmanga(name: any): Observable<any> {
-    return this.http.get(environment.Api_Endpoint + `manga?q=${name}`)
+    return this.http.get(environment.Api_Endpoint + `manga?q=${name}&limit=24`)
   }
 
 

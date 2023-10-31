@@ -4,6 +4,7 @@ import { HttpClientModule} from '@angular/common/http'
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -61,6 +62,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatCardModule,
     MatIconModule,
     FontAwesomeModule,
+    InfiniteScrollModule
     
   ],
   providers: [],

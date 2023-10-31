@@ -27,4 +27,5 @@ ul{
     font-size: 26px;
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }

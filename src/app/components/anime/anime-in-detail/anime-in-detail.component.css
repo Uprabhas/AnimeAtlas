@@ -76,6 +76,7 @@
     margin: 4px;
     margin-left: 40px;
     cursor: pointer;
+    font-size: 20px;
 }
 .btnt{
     background-image: linear-gradient(to right, #434343 0%, black 100%);

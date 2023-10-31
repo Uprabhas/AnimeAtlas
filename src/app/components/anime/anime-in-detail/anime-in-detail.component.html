@@ -7,7 +7,7 @@
                         <a><img class="img" src="{{detailanime?.data.images.jpg.large_image_url}}" alt></a>
                     </div>
                     <div class="col-md-7">
-                        <h1 style="font-family: 'Agbalumo',Sans-Serif;">{{detailanime?.data.titles[0].title}}</h1>
+                        <h1 style="font-family: 'Agbalumo',Sans-Serif;margin-left: 14px;">{{detailanime?.data.titles[0].title}}</h1>
                         <button class="btn add"
                             (click)="addwatchlish(detailanime.data)"><mat-icon>bookmark_border</mat-icon><label
                                 class="hides">Save in wishlist</label></button>
@@ -53,7 +53,7 @@
                                         {{detailanime?.data.genres[1].name}},{{detailanime?.data.genres[2].name}}.
                                     </li>
                                     <!-- <li class="content-list">streaming: <a target="_blank" href="{{detailanime.data.streaming[0].url}}">video1</a>,<a target="_blank" href="{{detailanime.data.streaming[1].url}}">video2</a>,<a target="_blank" href="{{detailanime.data.streaming[2].url}}">video3</a>,<a target="_blank" href="{{detailanime.data.streaming[3].url}}">video4</a></li> -->
-                                    <li class="content-list" style="cursor: pointer;"
+                                    <li class="content-list" style="cursor: pointer;color: rgb(127, 127, 184);"
                                         routerLink="/anime-news/{{detailanime?.data.mal_id}}"><a>News</a></li>
                                     <li class="content-list"><button mat-raised-button class="btn btnt"><a
                                                 style="color: white;text-decoration:none"
