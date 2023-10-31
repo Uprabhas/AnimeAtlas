@@ -40,15 +40,15 @@ export class MangaComponent implements OnInit {
   }
 
   addpage(){
-    this.manga(this.pageadd);
     this.pageadd +=1
     console.log(this.pageadd)
+    this.manga(this.pageadd);
   }
 
   subpage(){
-    this.manga(this.pageadd);
     this.pageadd -=1
     console.log(this.pageadd)
+    this.manga(this.pageadd);
   }
 
 

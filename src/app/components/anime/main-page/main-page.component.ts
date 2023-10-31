@@ -68,15 +68,15 @@ export class MainPageComponent implements OnInit {
 
 
   addpage(){
-    this.getTopanime(this.pageadd);
     this.pageadd +=1
     console.log(this.pageadd)
+    this.getTopanime(this.pageadd);
   }
 
   subpage(){
-    this.getTopanime(this.pageadd);
     this.pageadd -=1
     console.log(this.pageadd)
+    this.getTopanime(this.pageadd);
   }
 
 
