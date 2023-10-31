@@ -7,7 +7,7 @@
                         <a><img class="img" src="{{detailanime?.data.images.jpg.large_image_url}}" alt></a>
                     </div>
                     <div class="col-md-7">
-                        <h2>{{detailanime?.data.titles[0].title}}</h2>
+                        <h1 style="font-family: 'Agbalumo',Sans-Serif;">{{detailanime?.data.titles[0].title}}</h1>
                         <button class="btn add"
                             (click)="addwatchlish(detailanime.data)"><mat-icon>bookmark_border</mat-icon><label
                                 class="hides">Save in wishlist</label></button>
@@ -34,7 +34,7 @@
 
                                     <li class="content-list"
                                         routerLink="/anime-characters/{{detailanime?.data.mal_id}}">
-                                        <h4 style="color: rgb(140, 140, 211);cursor:pointer">Click
+                                        <h4 style="color: rgb(140, 140, 211);cursor:pointer;font-family: 'Didot', serif;">Click
                                             to view Characters</h4>
                                     </li>
                                     <li class="content-list">Wiki: <a target="_blank"
@@ -47,11 +47,11 @@
                             <div class="col-sm-6">
                                 <div class="content">
                                     <li class="content-list">Rating:{{detailanime?.data.score}}</li>
-                                    <!-- <li class="content-list">Producers:{{detailanime.data.producers[0].name}}</li>
-                                    <li class="content-list">Studios:{{detailanime.data.studios[0].name}}</li> -->
-                                    <!-- <li class="content-list">Genres:{{detailanime.data.genres[0].name}},
-                                        {{detailanime.data.genres[1].name}},{{detailanime.data.genres[2].name}}.
-                                    </li> -->
+                                    <li class="content-list">Producers:{{detailanime?.data.producers[0].name}}</li>
+                                    <li class="content-list">Studios:{{detailanime?.data.studios[0].name}}</li>
+                                    <li class="content-list">Genres:{{detailanime?.data.genres[0].name}},
+                                        {{detailanime?.data.genres[1].name}},{{detailanime?.data.genres[2].name}}.
+                                    </li>
                                     <!-- <li class="content-list">streaming: <a target="_blank" href="{{detailanime.data.streaming[0].url}}">video1</a>,<a target="_blank" href="{{detailanime.data.streaming[1].url}}">video2</a>,<a target="_blank" href="{{detailanime.data.streaming[2].url}}">video3</a>,<a target="_blank" href="{{detailanime.data.streaming[3].url}}">video4</a></li> -->
                                     <li class="content-list" style="cursor: pointer;"
                                         routerLink="/anime-news/{{detailanime?.data.mal_id}}"><a>News</a></li>

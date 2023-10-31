@@ -16,6 +16,13 @@
     width: 100%;
 }
 
+.title{
+    margin: 8px auto;
+    margin-left: 40%;
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    color: aliceblue;
+}
 
 .card{
     width: 12rem;

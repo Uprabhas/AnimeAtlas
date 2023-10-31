@@ -4,12 +4,10 @@
             <div class="card card-left">
                 <div class="row">
                     <div class="col-md-5">
-                        <a><img class="img"
-                                src="{{detaildata?.images.jpg.large_image_url}}"
-                                alt></a>
+                        <a><img class="img" src="{{detaildata?.images.jpg.large_image_url}}" alt></a>
                     </div>
                     <div class="col-md-7">
-                        <h2>{{detaildata?.titles[0].title}}</h2>
+                        <h1 style="font-family: 'Agbalumo',Sans-Serif;">{{detaildata?.titles[0].title}}</h1>
                         <ul>
                             <li class="list-item">Manga</li>
                             <li class="list-item">{{detaildata?.rank}}</li>
@@ -25,10 +23,12 @@
                                     <li class="content-list">status:{{detaildata?.status}}</li>
                                     <!-- <li class="content-list">duration:{{detaildata.data.duration}}</li> -->
 
-                                    <li class="content-list"
-                                        routerLink="/manga-characters/{{detaildata?.mal_id}}"><h4
-                                            style="color: rgb(165, 165, 238);cursor:pointer">click
-                                            to view Characters</h4></li>
+                                    <li class="content-list" routerLink="/manga-characters/{{detaildata?.mal_id}}">
+                                        <h4
+                                            style="color: rgb(165, 165, 238);cursor:pointer;font-family: 'Didot', serif;">
+                                            click
+                                            to view Characters</h4>
+                                    </li>
 
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                                     <!-- <li class="content-list">studios:{{detaildata.studios[0].name}}</li> -->
                                     <!-- <li class="content-list">other-souce: <a href="{{detaildata.data.external[0].url}}">link1</a></li> -->
 
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -48,16 +48,26 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="top-div">
-                <div class="card card-right">
+
+
+            <div class="card card-right">
+                <label class="header">
+                    <h3>Recommadation</h3>
+                </label>
+                <div class="top-div">
                     <div class="row">
                         <div class="card-body">
-                            <div class="box"
-                                *ngFor="let item of recommdation?.data">
-                                <a (click)="getrecommdationmanga(item.entry.mal_id)"  ><img 
-                                        src="{{item.entry.images.jpg.small_image_url}}"
-                                        alt="image"></a>
-                                <label>{{item.entry.title}}</label>
+                            <div class="box" *ngFor="let item of recommdation?.data">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <a (click)="getrecommdationmanga(item.entry.mal_id)"><img
+                                                src="{{item.entry.images.jpg.small_image_url}}" alt="image"></a>
+                                    </div>
+                                    <div class="col-sm-9">
+
+                                        <label>{{item.entry.title}}</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
