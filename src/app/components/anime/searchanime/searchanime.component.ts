@@ -17,13 +17,8 @@ getTop(arg0: any) {
 
   constructor(private Api:ApiService,private activatedrouter:ActivatedRoute){}
   ngOnInit(): void {
-    this.getsearchdata()
-  }
-  getsearchdata(){
-    let title = this.activatedrouter.snapshot.paramMap.get('title')
     
-    console.log('name',title)
-    title && this.Api.searchable(title).subscribe((res)=>{this.searchanime=res,console.log(res)},(err)=>{console.log(err)})
   }
+  
 
 }

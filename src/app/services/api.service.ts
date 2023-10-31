@@ -19,8 +19,8 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   // Anime
-  searchable(name: any): Observable<any> {
-    return this.http.get(environment.Api_Endpoint + `anime?q=${name}&limit=24`)
+  searchable(name: any,page:any): Observable<any> {
+    return this.http.get(environment.Api_Endpoint + `anime?q=${name}&limit=24&page=${page}`)
   }
   topAnime(page:any): Observable<any> {
     return this.http.get(environment.Api_Endpoint + `top/anime?page=${page}&limit=24`);

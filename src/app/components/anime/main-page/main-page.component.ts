@@ -25,7 +25,7 @@ export class MainPageComponent implements OnInit {
     if (this.title! == null) {
       this.getTopanime(this.pageadd);
     } else {
-      this.searchanime(this.title)
+      this.searchanime(this.title,this.pageadd)
 
     }
   }
@@ -34,7 +34,7 @@ export class MainPageComponent implements OnInit {
   onsearch(search: any) {
     this.title = search
     console.log(search)
-    this.searchanime(search)
+    this.searchanime(search,this.pageadd)
     this.showtop = false;
     this.showsearch = true;
   }
@@ -47,10 +47,10 @@ export class MainPageComponent implements OnInit {
 
   }
 
-  searchanime(name: any) {
+  searchanime(name: any,page:any) {
    
     setTimeout(() => {
-      this.api.searchable(name).subscribe((res: any) => { this.searchanimeresult = res.data, console.log(res) }, (err) => { console.log(err) })
+      this.api.searchable(name,page).subscribe((res: any) => { this.searchanimeresult = res.data, console.log(res) }, (err) => { console.log(err) })
     }, 1000);
   }
 
@@ -71,12 +71,14 @@ export class MainPageComponent implements OnInit {
     this.pageadd +=1
     console.log(this.pageadd)
     this.getTopanime(this.pageadd);
+    this.searchanime(this.title,this.pageadd)
   }
 
   subpage(){
     this.pageadd -=1
     console.log(this.pageadd)
     this.getTopanime(this.pageadd);
+    this.searchanime(this.title,this.pageadd)
   }
 
 
