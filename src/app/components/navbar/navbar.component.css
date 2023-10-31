@@ -45,6 +45,7 @@
     list-style-type: none;
     font-size: 18px;
     display: inline-block;
+    font-family: 'Times New Roman', serif;
 }
 
 .list-item a {

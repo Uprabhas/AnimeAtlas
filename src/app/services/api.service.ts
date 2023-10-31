@@ -23,7 +23,7 @@ export class ApiService {
     return this.http.get(environment.Api_Endpoint + `anime?q=${name}`)
   }
   topAnime(page:any): Observable<any> {
-    return this.http.get(environment.Api_Endpoint + `top/anime?page=${page}`);
+    return this.http.get(environment.Api_Endpoint + `top/anime?page=${page}&limit=24`);
   }
   detailanime(id: any): Observable<any> {
     return this.http.get(environment.Api_Endpoint + `anime/${id}/full`);
@@ -88,7 +88,7 @@ export class ApiService {
     return this.http.get(environment.Api_Endpoint + 'seasons/upcoming');
   }
   manga(page:any): Observable<any> {
-    return this.http.get(environment.Api_Endpoint + `top/manga?page=${page}`);
+    return this.http.get(environment.Api_Endpoint + `top/manga?page=${page}&limit=24`);
   }
 
   mangadetail(id: any): Observable<any> {
