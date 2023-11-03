@@ -47,10 +47,10 @@
                             <div class="col-sm-6">
                                 <div class="content">
                                     <li class="content-list">Rating:{{detailanime?.data.score}}</li>
-                                    <li class="content-list">Producers:{{detailanime?.data.producers[0].name}}</li>
-                                    <li class="content-list">Studios:{{detailanime?.data.studios[0].name}}</li>
-                                    <li class="content-list">Genres:{{detailanime?.data.genres[0].name}},
-                                        {{detailanime?.data.genres[1].name}},{{detailanime?.data.genres[2].name}}.
+                                    <li class="content-list">Producers:{{detailanime?.data.producers[0]?.name}}</li>
+                                    <li class="content-list">Studios:{{detailanime?.data.studios[0]?.name}}</li>
+                                    <li class="content-list">Genres:{{detailanime?.data.genres[0]?.name}},
+                                        {{detailanime?.data.genres[1]?.name}},{{detailanime?.data.genres[2]?.name}}.
                                     </li>
                                     <!-- <li class="content-list">streaming: <a target="_blank" href="{{detailanime.data.streaming[0].url}}">video1</a>,<a target="_blank" href="{{detailanime.data.streaming[1].url}}">video2</a>,<a target="_blank" href="{{detailanime.data.streaming[2].url}}">video3</a>,<a target="_blank" href="{{detailanime.data.streaming[3].url}}">video4</a></li> -->
                                     <li class="content-list" style="font-size: 20px;cursor: pointer;color: rgb(127, 127, 184);"

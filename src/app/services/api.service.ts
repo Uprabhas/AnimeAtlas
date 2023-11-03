@@ -24,8 +24,7 @@ export class ApiService {
     return this.http.get(environment.Api_Endpoint + `anime?q=${name}&limit=24&page=${page}`)
   }
   topAnime(page:any): Observable<data[]> {
-    return this.http.get(environment.Api_Endpoint + `top/anime?page=${page}&limit=24`,
-    )as Observable<data[]>;
+    return this.http.get(environment.Api_Endpoint + `top/anime?page=${page}&limit=24`,)as Observable<data[]>;
   }
   detailanime(id: any): Observable<any> {
     return this.http.get(environment.Api_Endpoint + `anime/${id}/full`);

@@ -17,8 +17,8 @@ export class MainPageComponent implements OnInit {
   Topanime: data[] | any = [];
   title: any;
   searchanimeresult: any;
-  addlist: boolean = true;
-  removelist: boolean = false
+  // addlist: boolean = true;
+  // removelist: boolean = false
   showtop: boolean = true;
   showsearch: boolean = false
   pageadd: any = 1;
@@ -100,16 +100,16 @@ export class MainPageComponent implements OnInit {
     console.log(id)
     this.wishlist.forEach((data: any) => {
       if(data.mal_id===id){
-        this.addlist=false;
-        this.removelist=true
+        // this.addlist=false;
+        // this.removelist=true
       }
     });
   }
 
   removewatchlist(item: any,id:any) {
     this.api.removewatchlistanime(item);
-    this.addlist = true;
-    this.removelist = false;
+    // this.addlist = true;
+    // this.removelist = false;
     console.log(id)
   }
 
