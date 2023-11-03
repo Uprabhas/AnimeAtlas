@@ -1,23 +1,36 @@
 <div class="section">
-    <input class="search" type="text" #search placeholder="           Search for anime" 
-    (keypress)="onsearch(search.value)">
+    <input class="search" type="text" #search
+        placeholder="           Search for anime"
+        (keypress)="onsearch(search.value)">
     <!-- <button class="btn btn-warning btns" (click)="onsearch(search.value)">
         </button> -->
     <header style="color: white;margin:auto">
         <div class="head">
-            <h1 style="margin-left: 45%;padding-top:10px;font-family: 'Courier New', Courier, monospace;">Top Animes</h1>
+            <h1
+                style="margin-left: 45%;padding-top:10px;font-family: 'Courier New', Courier, monospace;">Top
+                Animes</h1>
             <!-- <button mat-raised-button class="bwl" routerLink="/watchlist-anime">watchlist</button> -->
         </div>
     </header>
     <div class="main" *ngIf="showtop">
-        <div class="row">
-            <div class="col-md-2 mb-1" *ngFor="let item of Topanime?.data">
-                <div class="card">
-                    <div class="card-body">
-                        <a routerLink="/anime-in-detail/{{item.mal_id}}"><img src="{{item.images.jpg.image_url}}"alt=""></a>
-                        <label for="">{{item.title}}</label><br>
-                        <button  class="btn" (click)="addwatchlish(item)"><mat-icon >bookmark_border</mat-icon><label class="hides" >Save in wishlist</label></button>
-                        <button class="btn" (click)="removewatchlist(item)"><mat-icon>bookmark</mat-icon><label class="hider" >Remove </label></button>
+        <div class="search-results"
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="50"
+            (scroll)="onScroll()"
+            [scrollWindow]="false">
+            <div class="row">
+                <div class="col-md-2 mb-1" *ngFor="let item of Topanime?.data; let i=index">
+                    <div class="card">
+                        <div class="card-body">
+                            <a routerLink="/anime-in-detail/{{item.mal_id}}"><img
+                                    src="{{item.images.jpg.image_url}}" alt></a>
+                            <label for>{{item.title}}</label><br>
+                            <button class="btn" (click)="addwatchlish(item,item.mal_id,i)" *ngIf="addlist"><mat-icon>bookmark_border</mat-icon><label
+                                    class="hides">Save in wishlist</label></button>
+                            <button class="btn" (click)="removewatchlist(item,item.mal_id)" *ngIf="removelist"><mat-icon>bookmark</mat-icon><label
+                                    class="hider">Remove </label></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -26,14 +39,17 @@
 
     <div class="main" *ngIf="showsearch">
         <div class="row">
-            <div class="col-md-2 mb-1" *ngFor="let element of searchanimeresult">
+            <div class="col-md-2 mb-1" *ngFor="let element of searchanimeresult let i= index">
                 <div class="card">
                     <div class="card-body">
-                        <a routerLink="/anime-in-detail/{{element.mal_id}}"><img src="{{element.images.jpg.image_url}}"
-                                alt=""></a>
-                        <label for="">{{element.title}}</label><br>
-                        <button class="btn" (click)="addwatchlish(element)"><mat-icon>bookmark_border</mat-icon><label class="hides" >Save in wishlist</label></button>
-                        <button class="btn" (click)="removewatchlist(element)"><mat-icon>bookmark</mat-icon><label class="hider" >Remove </label></button>
+                        <a routerLink="/anime-in-detail/{{element.mal_id}}"><img
+                                src="{{element.images.jpg.image_url}}"
+                                alt></a>
+                        <label for>{{element.title}}</label><br>
+                        <button class="btn" (click)="addwatchlish(element,element.mal_id,i)"><mat-icon>bookmark_border</mat-icon><label
+                                class="hides">Save in wishlist</label></button>
+                        <button class="btn" (click)="removewatchlist(element,element.mal_id)"><mat-icon>bookmark</mat-icon><label
+                                class="hider">Remove </label></button>
                     </div>
                 </div>
             </div>
@@ -41,8 +57,10 @@
     </div>
     <div class="page">
         <ul class="pageo">
-            <li class="listo"><button (click)="subpage()" class="btn btnb" style="margin-left:90%;background-color: white;font-size:20px"><</button></li>
-            <li class="listo"><button (click)="addpage()" class="btn btnn" style="margin-left: 2%;background-color: white;font-size:20px">></button></li>
+            <li class="listo"><button (click)="subpage()" class="btn btnb"
+                    style="margin-left:90%;background-color: white;font-size:20px"><</button></li>
+            <li class="listo"><button (click)="addpage()" class="btn btnn"
+                    style="margin-left: 2%;background-color: white;font-size:20px">></button></li>
         </ul>
     </div>
 </div>

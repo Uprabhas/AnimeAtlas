@@ -65,6 +65,7 @@ border-radius: 8px;
 }
 .btn{
     color: gray;
+    border: none;
 }
 
 .hides{
@@ -107,4 +108,10 @@ color: white;
     display: inline;
     
 }
+
+.search-results {
+    /* height: 60rem; */
+    overflow: hidden;
+    scrollbar-track-color:black;
+  }
 

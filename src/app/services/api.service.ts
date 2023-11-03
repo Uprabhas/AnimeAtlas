@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as _ from 'lodash';
+import { data } from '../components/models/model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,9 @@ export class ApiService {
   searchable(name: any,page:any): Observable<any> {
     return this.http.get(environment.Api_Endpoint + `anime?q=${name}&limit=24&page=${page}`)
   }
-  topAnime(page:any): Observable<any> {
-    return this.http.get(environment.Api_Endpoint + `top/anime?page=${page}&limit=24`);
+  topAnime(page:any): Observable<data[]> {
+    return this.http.get(environment.Api_Endpoint + `top/anime?page=${page}&limit=24`,
+    )as Observable<data[]>;
   }
   detailanime(id: any): Observable<any> {
     return this.http.get(environment.Api_Endpoint + `anime/${id}/full`);
@@ -46,19 +48,11 @@ export class ApiService {
     this.watchlistanime.push(data);
     this.wishlistanime = _.uniqBy(this.watchlistanime, 'mal_id');
     // this.wishlistanime = unique
-    console.log(this.wishlistanime)
+    // console.log(this.wishlistanime)
     this.animelist.next(this.wishlistanime)
     // console.log(this.watchlistanime)
-
-
-   
   }
-
   
-
-
-
-
   removewatchlistanime(data: any) {
     this.wishlistanime.map((a: any, index: any) => {
       if (data.mal_id === a.mal_id) {

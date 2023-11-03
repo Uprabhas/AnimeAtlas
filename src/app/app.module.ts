@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http'
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatIconModule} from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http'
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +28,7 @@ import { AnimeNewsComponent } from './components/anime/anime-news/anime-news.com
 import { WatchlistComponent } from './components/anime/watchlist/watchlist.component';
 import { DefaultPageComponent } from './components/default-page/default-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 
 @NgModule({
@@ -63,9 +63,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatIconModule,
     FontAwesomeModule,
     InfiniteScrollModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);
