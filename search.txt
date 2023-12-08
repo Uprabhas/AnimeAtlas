@@ -1,0 +1,474 @@
+import { DatePipe } from '@angular/common';
+import { Component, ViewChild } from '@angular/core';
+import { UntypedFormControl } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { AgGridAngular } from 'ag-grid-angular';
+import {
+  CellValueChangedEvent,
+  ColDef,
+  GridApi,
+  GridReadyEvent,
+} from 'ag-grid-community';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { BaseComponent } from 'src/app/base.component';
+import { PdfExportService } from 'src/app/core/services/helpers/pdf-export.service';
+import { MastersService } from 'src/app/core/services/masters.service';
+import { Constants } from 'src/app/helpers/constants';
+import { fadeEffect } from 'src/app/shared/animations';
+import { AggridCropViewCell } from './AggridCropViewCell';
+import { ToggleBtnCellRenderer } from './toggle-button-cell-renderer.component';
+
+@Component({
+  selector: 'app-filteration-rating-list',
+  templateUrl: './filteration-rating-list.component.html',
+  styleUrls: ['./filteration-rating-list.component.scss'],
+  animations: [fadeEffect],
+})
+export class FilterationRatingListComponent extends BaseComponent {
+  @ViewChild(MatPaginator) paginator: MatPaginator
+
+  public columnDefs: ColDef[] = [
+    {
+      field: 'cropType',
+      pinned: 'left',
+      width: 120,
+      cellClass: 'ag-center-text',
+      suppressMovable: true,
+      wrapHeaderText: true,
+      wrapText: true,
+    },
+    {
+      field: 'cropName',
+      pinned: 'left',
+      width: 180,
+      headerName: 'Crop Name and Variety',
+      cellRenderer: AggridCropViewCell,
+      suppressMovable: true,
+      autoHeight: true,
+    },
+    {
+      field: 'totalScore',
+      headerName: 'Total Priority Score',
+      pinned: 'left',
+      width: 120,
+      cellClass: 'ag-center-text',
+      suppressMovable: true,
+      wrapHeaderText: true,
+      autoHeaderHeight: true,
+    },
+  ]
+  private gridApi!: GridApi
+
+  gridOptions = {
+    defaultColDef: {
+      sortable: true,
+      resizable: false,
+    },
+    enableSorting: true,
+  }
+
+  public rowData: any = []
+  ratingList: any = []
+  cutOffValue: number
+  searchFilterationRating = new UntypedFormControl('')
+  @ViewChild(AgGridAngular) agGrid!: AgGridAngular
+
+  updateRatingArray: any[] = []
+  readonly: boolean = !this.accessAllowed(this.ACCESS.ADD)
+  protected _onDestroy = new Subject<void>()
+  dateObj: any
+  pageIndex: number = 0
+  pageSize: number = 20
+  totalElements: number = 0
+  constructor(
+    private masterService: MastersService,
+    public datepipe: DatePipe,
+    private pdfExportService: PdfExportService
+  ) {
+    super()
+  }
+
+  ngOnDestroy(): void {
+    super.ngOnDestroy()
+    this._onDestroy.unsubscribe()
+  }
+
+  ngOnInit(): void {
+    // this.getCutOff()
+
+    this.searchFilterationRating.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .pipe(debounceTime(400), distinctUntilChanged())
+      .subscribe((query: string) => {
+        console.log('debounceTime', query)
+        this.filterList(query)
+      })
+  }
+
+  onGridReady(params: GridReadyEvent) {
+    params.api.sizeColumnsToFit()
+    this.gridApi = params.api
+    this.getListData()
+  }
+
+  // filterList(query) {
+  //   this.gridApi.setQuickFilter(query)
+  // }
+
+  filterdQuery: any = ''
+  filterList(query: string): void {
+    this.filterdQuery = query
+    console.log('query', this.filterdQuery)
+    this.filterdQuery.length > 2 || this.util.isEmpty(this.filterdQuery)
+      ? this.callFilterationRatingList()
+      : null
+  }
+
+  enterFilterCutOff(event) {
+    console.log('event', event)
+
+    this.filterCutOff(event)
+  }
+  filterCutOff(event) {
+    this.cutOffValue = event
+
+    if (this.util.isEmpty(this.cutOffValue + '')) {
+      this.notifier.showToastError('', 'Please enter a valid Cut-Off score')
+      return
+    }
+    this.callFilterationRatingList()
+    //    this.gridApi.onFilterChanged()
+  }
+
+  isExternalFilterPresent = () => {
+    return this.cutOffValue && !isNaN(this.cutOffValue)
+  }
+
+  getListData() {
+    let queryParams = {
+      pageSize: 1000,
+      pageNumber: 0,
+      query: this.filterdQuery,
+      status: 1,
+    }
+    this.masterService.getRatingList(queryParams).subscribe(
+      (res: any) => {
+        if (res.error == '200') {
+          this.ratingList = res.data.ratingParameterModel.content
+          this.ratingList.forEach((element) => {
+            element.termButtons = element.terminologyId
+              .split(',')
+              .map((item) => {
+                let termArr: any[] = item.split(' ')
+                return {
+                  id: termArr[2],
+                  value: termArr[1],
+                  termId: termArr[0],
+                }
+              })
+            let maxValue = Math.max(
+              ...element.termButtons.map((item) => Number(item.id))
+            )
+
+            element.termButtons.forEach((termBtn, index) => {
+              termBtn.isBetter = element.isBetter.toString()
+              termBtn.id =
+                termBtn.isBetter == termBtn.termId
+                  ? maxValue.toString()
+                  : Constants.NEGATIVE_RATING
+              termBtn.score = termBtn.id
+            })
+          })
+          console.log('ratingList', this.ratingList)
+          this.dynamicallyConfigureColumnsFromObject(this.ratingList)
+          this.callFilterationRatingList()
+        } else {
+          this.logger.log(res.error)
+          this.notifier.showToastError(res.message, 'Failed!')
+        }
+      },
+      (err) => {
+        this.logger.log(err)
+        this.notifier.showToastError('Failed to get response', 'Failed!')
+      }
+    )
+  }
+
+  doesExternalFilterPass = (node) => {
+    if (node.data.totalScore >= this.cutOffValue) {
+      return true
+    }
+    return false
+  }
+
+  onPriorityChange(data) {
+    console.log('onPriorityChange', data.data[data.field])
+    // delete data.data[data.field].termSelected;
+    this.updateRatingArray.push(data.data[data.field])
+  }
+
+  dynamicallyConfigureColumnsFromObject(ratingArr) {
+    let colDefs = this.agGrid.gridOptions.api.getColumnDefs()
+    colDefs.length = 0
+    colDefs = this.columnDefs
+    ratingArr.forEach((val, idx) => {
+      colDefs.push({
+        // resizable: true,
+        width: 120,
+        wrapHeaderText: true,
+        autoHeaderHeight: true,
+        wrapText: true,
+        suppressMovable: true,
+        cellRenderer: ToggleBtnCellRenderer,
+        cellRendererParams: {
+          onPriorityChange: this.onPriorityChange.bind(this),
+          ratingButtons: val.termButtons,
+          isBetter: val.isBetter.toString(),
+        },
+        headerTooltip: val.filterDescription,
+        cellClass: 'rating-parent',
+        field: val.filterName,
+        editable: false,
+        // headerName: val.filterName + " (" + val.weightage + "%)"
+
+        headerName: '',
+        headerComponentParams: {
+          template: `
+            <p>
+            ${val.filterName} (${val.weightage}%)
+            <img width="16px" src="../../../../assets/icons/info.png" />
+          </p>`,
+        },
+      })
+    })
+    this.agGrid.api.setColumnDefs(colDefs)
+  }
+
+  cellValueChanged(e: CellValueChangedEvent) {
+    // let params = e.data
+    // let totalScore: number = 0
+    // console.log('cellValueChanged', params)
+    // this.util
+    //   .findAllByKey(e.data, 'score')
+    //   .toString()
+    //   .split(',')
+    //   .forEach((item) => {
+    //     if (!this.util.isEmpty(item)) totalScore += parseInt(item)
+    //   })
+    // params.totalScore = totalScore
+    // let updatedFieldName = e.colDef.field
+    // // this.updateRatingArray.push(e.data[updatedFieldName])
+    // e.api.applyTransaction({ update: [params] })
+  }
+
+  nextPage(event) {
+    this.pageIndex = event.pageIndex
+    this.pageSize = event.pageSize
+    this.callFilterationRatingList()
+  }
+
+  callFilterationRatingList() {
+    let queryParams = {
+      pageNumber: this.pageIndex,
+      pageSize: this.pageSize,
+      query: this.filterdQuery,
+    }
+    this.masterService.getFilterationRatingList(queryParams).subscribe(
+      (res: any) => {
+        if (res.error == '200') {
+          if (!this.util.isEmpty(res.data.lastModified))
+            this.dateObj = res.data.lastModified.split(',')
+
+          let filterJsonArr = []
+          let isUnsavedRatings: boolean = this.updateRatingArray.length > 0
+          let tempRowData: any[] = res.data.filterationRatingList.content.map(
+            (val) => {
+              if (isUnsavedRatings) {
+                let unsavedRatings: any[] = this.updateRatingArray.filter(
+                  (updateItem) => updateItem.varietyId == val.id
+                )
+                if (unsavedRatings.length > 0) {
+                  val.allFilterValue = [
+                    ...val.allFilterValue,
+                    ...unsavedRatings,
+                  ]
+                }
+              }
+              filterJsonArr.push(
+                this.getParameterScore(val.allFilterValue, val.id)
+              )
+              return {
+                id: val.id,
+                cropType: val.cropTypeId,
+                cropName: val.cropNameId + ' - ' + val.cropVarietyId,
+                cropImage: val.cropImage,
+                cropImageAttr: 'cropImage',
+              }
+            }
+          )
+
+          let finalArr = filterJsonArr.map((x, xidx) =>
+            Object.assign(
+              x,
+              tempRowData.find((y, yidx) => xidx == yidx)
+            )
+          )
+          this.rowData = finalArr
+          setTimeout(() => {
+            this.paginator.pageIndex = this.pageIndex
+            this.paginator.length = res.data.filterationRatingList.totalElements
+          })
+        } else {
+          this.logger.log(res.error)
+          this.notifier.showToastError(res.message, 'Failed!')
+        }
+      },
+      (err) => {
+        this.logger.log(err)
+        this.notifier.showToastError('Failed to get response', 'Failed!')
+      }
+    )
+  }
+
+  getParameterScore(parameterArr: any[], varietyID) {
+    // if (parameterArr.length == 0) {
+    //   return {}
+    // }
+    let tempJson = {}
+    this.ratingList.forEach((element) => {
+      tempJson[element.filterName] = {
+        varietyId: varietyID,
+        parameterId: element.id,
+        weightage: element.weightage,
+        score: '',
+      }
+
+      parameterArr.forEach((val) => {
+        if (element.id == val.parameterId) {
+          delete val.id
+          tempJson[element.filterName] = val
+        }
+      })
+    })
+
+    if (parameterArr.length > 0) {
+      let totalScore: number = parameterArr
+        .map((ratingVal) => ratingVal.score)
+        .reduce((x, y) => x + y)
+      tempJson['totalScore'] = totalScore.toFixed(2)
+    }
+
+    return tempJson
+  }
+
+  updateAllRating() {
+    // this.updateCutOff()
+
+    console.log('allrows ' + JSON.stringify(this.updateRatingArray))
+    let finalUpdateArray = this.updateRatingArray
+    if (finalUpdateArray.length < 1) {
+      // this.notifier.showToastError('', 'No scores to update')
+      return
+    }
+
+    let totalScoreList: any[] = []
+    this.util.getAggridApiRows(this.gridApi).forEach((item) => {
+      if (!this.util.isEmpty(item.totalScore)) {
+        totalScoreList.push({
+          cropId: item.id,
+          totalScore: item.totalScore,
+        })
+      }
+    })
+
+    let finalArr = {
+      filterValueMappingDto: finalUpdateArray,
+      totalScoreList: totalScoreList,
+    }
+
+    console.log('payload', finalArr)
+
+    this.masterService.updateFilterationRatingList(finalArr).subscribe(
+      (res: any) => {
+        if (res.error == '200') {
+          console.log(res)
+          this.notifier.showToastSuccess(res.message, 'Success!')
+          this.gridApi.refreshCells()
+        } else {
+          this.logger.log(res.error)
+          this.notifier.showToastError(res.message, 'Failed!')
+        }
+      },
+      (err) => {
+        this.logger.log(err)
+        this.notifier.showToastError(
+          'Failed to get response',
+          'Failed to update rating!'
+        )
+      }
+    )
+  }
+
+  updateCutOff() {
+    this.masterService
+      .updateCutOff({ id: 1, cutOffValue: this.cutOffValue })
+      .subscribe(
+        (res: any) => {
+          if (res.error == '200') {
+          } else {
+            this.logger.log(res.error)
+            this.notifier.showToastError(res.message, 'Failed!')
+          }
+        },
+        (err) => {
+          this.logger.log(err)
+          this.notifier.showToastError(
+            'Failed to get response',
+            'Failed to update cut-off!'
+          )
+        }
+      )
+  }
+
+  getCutOff() {
+    this.masterService.getCutOff().subscribe(
+      (res: any) => {
+        if (res.error == '200') {
+          this.cutOffValue = res.data.cutOffValue || 0
+        } else {
+          this.logger.log(res.error)
+          this.notifier.showToastError(res.message, 'Failed to get cut-off!')
+        }
+      },
+      (err) => {
+        this.logger.log(err)
+        this.notifier.showToastError('Failed to get response', 'Failed!')
+      }
+    )
+  }
+
+  updateRatingList(finalArr: any) {
+    this.masterService.updateFilterationRatingList(finalArr).subscribe(
+      (res: any) => {
+        if (res.error == '200') {
+          console.log(res)
+          this.notifier.showToastSuccess(res.message, 'Success!')
+        } else {
+          this.logger.log(res.error)
+          this.notifier.showToastError(res.message, 'Failed!')
+        }
+      },
+      (err) => {
+        this.logger.log(err)
+        this.notifier.showToastError('Failed to get response', 'Failed!')
+      }
+    )
+  }
+
+  generatePDF() {
+    this.pdfExportService.generatePDF('Priority Ratings', 'Priority Ratings','.reportClass')
+  }
+
+}
+
