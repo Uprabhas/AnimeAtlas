@@ -52,7 +52,6 @@ export class AnimeInDetailComponent implements OnInit{
     this.mal_id && this.api.animevideos(this.mal_id).subscribe((res)=>{this.trailer=res,console.log(res)},(err)=>{console.log(err)})
 
     this.router.navigateByUrl(this.router.url.replace(this.mal_id, idx))
-   
   }
   
   addwatchlish(item:any){

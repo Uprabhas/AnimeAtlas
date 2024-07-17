@@ -16,21 +16,21 @@ import { WatchlistComponent } from './components/anime/watchlist/watchlist.compo
 import { DefaultPageComponent } from './components/default-page/default-page.component';
 
 const routes: Routes = [
-  {path:'',component:SectionComponent},
-  {path:'main-page',component:MainPageComponent},
-  { path:'manga',component:MangaComponent },
-  { path:'genres',component:GenresComponent },
-  { path:'upcomming',component:UpcommingComponent },
-  { path:'anime-in-detail/:mal_id',component:AnimeInDetailComponent },
-  { path:'anime-characters/:mal_id',component:AnimeCharactersComponent },
-  { path:'anime-news/:mal_id',component:AnimeNewsComponent},
-  { path:'anime-videos/:mal_id',component:AnimeVieosComponent },
-  {path:'watchlist-anime',component:WatchlistComponent},
-  {path:'manga-in-detail/:mal_id',component:MangadetailComponent},
-  {path:'manga-characters/:mal_id',component:CharacterComponent},
-  {path:'**',component:DefaultPageComponent}
+  { path: '', component: SectionComponent },
+  { path: 'anime', component: MainPageComponent },
+  { path: 'manga', component: MangaComponent },
+  { path: 'genres', component: GenresComponent },
+  { path: 'upcomming', component: UpcommingComponent },
+  { path: 'anime/:mal_id', component: AnimeInDetailComponent },
+  { path: 'anime-characters/:mal_id', component: AnimeCharactersComponent },
+  { path: 'anime-news/:mal_id', component: AnimeNewsComponent },
+  { path: 'anime-videos/:mal_id', component: AnimeVieosComponent },
+  { path: 'watchlist-anime', component: WatchlistComponent },
+  { path: 'manga/:mal_id', component: MangadetailComponent },
+  { path: 'manga-characters/:mal_id', component: CharacterComponent },
+  { path: '**', component: DefaultPageComponent }
   // {path:'searchanime/:title',component:SearchanimeComponent}
-  
+
 ];
 
 @NgModule({
