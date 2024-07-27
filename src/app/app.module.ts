@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,6 +29,9 @@ import { WatchlistComponent } from './components/anime/watchlist/watchlist.compo
 import { DefaultPageComponent } from './components/default-page/default-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { LoadbarComponent } from './components/loadbar/loadbar.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoaderInterceptor } from './services/interceptor/loader.interceptor';
 
 
 @NgModule({
@@ -49,7 +52,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     SearchanimeComponent,
     AnimeNewsComponent,
     WatchlistComponent,
-    DefaultPageComponent
+    DefaultPageComponent,
+    LoadbarComponent
   ],
   imports: [
     BrowserModule,
@@ -62,11 +66,14 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     MatCardModule,
     MatIconModule,
     FontAwesomeModule,
-    InfiniteScrollModule
-
+    InfiniteScrollModule,
+    MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,
+    useClass:LoaderInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-platformBrowserDynamic().bootstrapModule(AppModule);
+// platformBrowserDynamic().bootstrapModule(AppModule);
