@@ -13,6 +13,9 @@
 
 .container {
     margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header-list{
@@ -39,6 +42,10 @@
 
 .ul{
     margin-right: -50px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
 }
 
 .list-item {
@@ -46,6 +53,7 @@
     font-size: 18px;
     display: inline-block;
     font-family: 'Times New Roman', serif;
+    margin-right: 15px;
 }
 
 .list-item a {
@@ -61,7 +69,24 @@
     width: 100%;
     height: 230px;
     position: relative;
-    background-size: 1300px 300px ;
-    opacity: 0.5;
+    background-size: 1300px 300px;
+    opacity: 0.7;
 }
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
+    .ul {
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: #555; /* Example background color */
+        padding: 10px; /* Example padding */
+    }
+
+    .list-item {
+        margin-bottom: 10px; /* Adjust as needed */
+        margin-right: 0;
+    }
+}

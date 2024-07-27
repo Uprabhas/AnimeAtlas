@@ -5,16 +5,45 @@ section{
     height: 300px;
 }
 .home{
-    padding: 40px;
-    padding-left: 45%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.container {
+    max-width: 960px; /* Adjust max-width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .btn{
-    background-color: rgb(73, 70, 70);
-    margin: auto;
-    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #352727;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #0056b3;
 }
 
 .main{
-    color: aliceblue;
+    background-color: #000000;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .main {
+        padding: 15px;
+    }
+    .btn {
+        font-size: 14px;
+    }
 }
