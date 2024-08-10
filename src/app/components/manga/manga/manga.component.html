@@ -1,17 +1,18 @@
 <div class="section">
-    <input class="search" type="text" #search placeholder="      Search for manga" (input)="searchname(search.value)">
     <!-- <button
         class="btn btns btn-warning" (click)="searchname(search.value)"><svg xmlns="http://www.w3.org/2000/svg" width="16"
             height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path
                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
         </svg></button> -->
-    <header style="color: white;margin:auto">
-        <h1 style="margin-left: 45%;font-family: 'Courier New', Courier, monospace;padding-top:10px">Manga</h1>
+    <header class="text-center" style="color : white;margin:auto">
+    <input class="search" type="text" #search placeholder="      Search for manga" (input)="searchname(search.value)">
+        <h1 style="font-family: 'Courier New', Courier, monospace;padding-top:10px">Manga</h1>
     </header>
     <div class="main" *ngIf="showtop">
-        <div class="row">
-            <div class="col-md-2 mb-1" *ngFor="let item of mangadata?.data">
+        <div class="search-results">
+        <div class="row poster">
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-10 mb-1" *ngFor="let item of mangadata?.data">
                 <div class="card">
                     <div class="card-body">
                         <a routerLink="/manga/{{item.mal_id}}"><img src="{{item.images.jpg.image_url}}"
@@ -21,6 +22,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="main" *ngIf="showsearch">
@@ -36,10 +38,23 @@
             </div>
         </div>
     </div>
-    <div class="page">
-        <ul class="pageo">
-            <li class="listo"><button (click)="subpage()" class="btn btnp" style="margin-left: 2%;"><</button></li>
-            <li class="listo"><button (click)="addpage()" class="btn btnp" style="margin-left: 92%">></button></li>
-        </ul>
+    <div class="page row p-2">
+        <div class="col-xm-12">
+            <button
+          (click)="subpage()"
+          class="btn btnb"
+          style="background-color: white; font-size: 20px"
+        >
+          <
+        </button>
+  
+        <button
+          (click)="addpage()"
+          class="btn btnn"
+          style="background-color: white; font-size: 20px"
+        >
+          >
+        </button>
+        </div>
     </div>
 </div>

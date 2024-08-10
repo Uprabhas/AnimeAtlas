@@ -1,96 +1,155 @@
 <div class="main">
     <div class="row">
-        <div class="col-md-8">
-            <div class="card card-left">
-                <div class="row">
-                    <div class="col-md-5">
-                        <a><img class="img" src="{{detailanime?.data.images.jpg.large_image_url}}" alt></a>
-                    </div>
-                    <div class="col-md-7">
-                        <h1 style="font-family: 'Agbalumo',Sans-Serif;margin-left: 14px;">{{detailanime?.data.titles[0].title}}</h1>
-                        <button class="btn add"
-                            (click)="addwatchlish(detailanime.data)"><mat-icon>bookmark_border</mat-icon><label
-                                class="hides">Save in wishlist</label></button>
-                        <!-- <button class="btn remove"
-                            (click)="removewatchlist(detailanime.data)"><mat-icon>bookmark</mat-icon><label
-                                class="hider">Remove to WishList</label></button> -->
-                        <br>
-
-
-                        <ul>
-                            <li class="list-item">TV</li>
-                            <li class="list-item">{{detailanime?.data.rating}}</li>
-                            <li class="list-item">HD</li>
-                            <li class="list-item">{{detailanime?.data.episodes}}</li>
-                        </ul>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="content">
-
-                                    <li class="content-list">Type:{{detailanime?.data.type}}</li>
-                                    <li class="content-list">Year:{{detailanime?.data.year}}</li>
-                                    <li class="content-list">Status:{{detailanime?.data.status}}</li>
-                                    <li class="content-list">Duration:{{detailanime?.data.duration}}</li>
-
-                                    <li class="content-list"
-                                        routerLink="/anime-characters/{{detailanime?.data.mal_id}}">
-                                        <h4 style="color: rgb(140, 140, 211);cursor:pointer;font-family: 'Didot', serif;">Click
-                                            to view Characters</h4>
-                                    </li>
-                                    <li class="content-list">Wiki: <a target="_blank"
-                                            href="{{detailanime?.data.external[0].url}}">Link1</a>,<a target="_blank"
-                                            href="{{detailanime?.data.external[1].url}}">Link2</a>,<a target="_blank"
-                                            href="{{detailanime?.data.external[2].url}}">Link3</a>,<a target="_blank"
-                                            href="{{detailanime?.data.external[3].url}}">Link4</a></li>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="content">
-                                    <li class="content-list">Rating:{{detailanime?.data.score}}</li>
-                                    <li class="content-list">Producers:{{detailanime?.data.producers[0]?.name}}</li>
-                                    <li class="content-list">Studios:{{detailanime?.data.studios[0]?.name}}</li>
-                                    <li class="content-list">Genres:{{detailanime?.data.genres[0]?.name}},
-                                        {{detailanime?.data.genres[1]?.name}},{{detailanime?.data.genres[2]?.name}}.
-                                    </li>
-                                    <!-- <li class="content-list">streaming: <a target="_blank" href="{{detailanime.data.streaming[0].url}}">video1</a>,<a target="_blank" href="{{detailanime.data.streaming[1].url}}">video2</a>,<a target="_blank" href="{{detailanime.data.streaming[2].url}}">video3</a>,<a target="_blank" href="{{detailanime.data.streaming[3].url}}">video4</a></li> -->
-                                    <li class="content-list" style="font-size: 20px;cursor: pointer;color: rgb(127, 127, 184);"
-                                        routerLink="/anime-news/{{detailanime?.data.mal_id}}"><a>News</a></li>
-                                    <li class="content-list"><button mat-raised-button class="btn btnt"><a
-                                                style="color: white;text-decoration:none"
-                                                href="{{trailer?.data?.promo[0]?.trailer?.embed_url}}">Trailer</a></button>
-                                    </li>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+      <div class="card-content col-lg-8 col-md-8 col-sm-8 col-xs-10">
+        <div class="card card-left">
+          <div class="row">
+            <div class="col-lg-5 col-md-8 col-sm-5 col-xs-6">
+              <a
+                ><img
+                  class="img"
+                  src="{{ detailanime?.data.images.jpg.large_image_url }}"
+                  alt
+              /></a>
             </div>
-        </div>
-        <div class="col-md-4">
-
-            <div class="card card-right">
-                <label class="header"><h3>Recommadation</h3></label>
-                <div class="top-div">
-                    <div class="row">
-                        <div class="card-body">
-
-                            <div class="box" *ngFor="let item of recommadation?.data">
-                                <div (click)="getRecomdation(item)" class="row">
-                                    <div class="col-sm-2">
-
-                                        <a><img src="{{item?.entry.images.jpg.small_image_url}}" alt="image"></a>
-                                    </div>
-                                    <div class="col-sm-10">
-
-                                        <label class="title">{{item.entry.title}}</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-md-7">
+              <h1 style="font-family: 'Agbalumo', Sans-Serif; margin-left: 14px">
+                {{ detailanime?.data.title_english }}
+              </h1>
+              <button class="btn add" (click)="addwatchlish(detailanime.data)">
+                <mat-icon>bookmark_border</mat-icon
+                ><label class="hides">Save in wishlist</label>
+              </button>
+              <!-- <button class="btn remove"
+                              (click)="removewatchlist(detailanime.data)"><mat-icon>bookmark</mat-icon><label
+                                  class="hider">Remove to WishList</label></button> -->
+              <br />
+  
+              <ul>
+                <li class="list-item">TV</li>
+                <li class="list-item">{{ detailanime?.data.rating }}</li>
+                <li class="list-item">HD</li>
+                <li class="list-item">{{ detailanime?.data.episodes }}</li>
+              </ul>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="content">
+                    <li class="content-list">
+                      Type:{{ detailanime?.data.type }}
+                    </li>
+                    <li class="content-list">
+                      Year:{{ detailanime?.data.year }}
+                    </li>
+                    <li class="content-list">
+                      Status:{{ detailanime?.data.status }}
+                    </li>
+                    <li class="content-list">
+                      Duration:{{ detailanime?.data.duration }}
+                    </li>
+  
+                    <li
+                      class="content-list"
+                      routerLink="/anime-characters/{{
+                        detailanime?.data.mal_id
+                      }}"
+                    >
+                      <h4
+                        style="
+                          color: rgb(140, 140, 211);
+                          cursor: pointer;
+                          font-family: 'Didot', serif;
+                        "
+                      >
+                        Click to view Characters
+                      </h4>
+                    </li>
+                    <li class="content-list">
+                      Wiki:
+                      <a
+                        target="_blank"
+                        href="{{ detailanime?.data.external[0].url }}"
+                        >Link1</a
+                      >,<a
+                        target="_blank"
+                        href="{{ detailanime?.data.external[1].url }}"
+                        >Link2</a
+                      >,<a
+                        target="_blank"
+                        href="{{ detailanime?.data.external[2].url }}"
+                        >Link3</a
+                      >,<a
+                        target="_blank"
+                        href="{{ detailanime?.data.external[3].url }}"
+                        >Link4</a
+                      >
+                    </li>
+                  </div>
                 </div>
+                <div class="col-sm-6">
+                  <div class="content">
+                    <li class="content-list">
+                      Rating:{{ detailanime?.data.score }}
+                    </li>
+                    <li class="content-list">
+                      Producers:{{ detailanime?.data.producers[0]?.name }}
+                    </li>
+                    <li class="content-list">
+                      Studios:{{ detailanime?.data.studios[0]?.name }}
+                    </li>
+                    <li class="content-list">
+                      Genres:{{ detailanime?.data.genres[0]?.name }},
+                      {{ detailanime?.data.genres[1]?.name }},{{
+                        detailanime?.data.genres[2]?.name
+                      }}.
+                    </li>
+                    <!-- <li class="content-list">streaming: <a target="_blank" href="{{detailanime.data.streaming[0].url}}">video1</a>,<a target="_blank" href="{{detailanime.data.streaming[1].url}}">video2</a>,<a target="_blank" href="{{detailanime.data.streaming[2].url}}">video3</a>,<a target="_blank" href="{{detailanime.data.streaming[3].url}}">video4</a></li> -->
+                    <li
+                      class="content-list"
+                      style="
+                        font-size: 20px;
+                        cursor: pointer;
+                        color: rgb(127, 127, 184);
+                      "
+                      routerLink="/anime-news/{{ detailanime?.data.mal_id }}"
+                    >
+                      <a>News</a>
+                    </li>
+                    <li class="content-list">
+                      <button mat-raised-button class="btn btnt">
+                        <a
+                          style="color: white; text-decoration: none"
+                          href="{{ trailer?.data?.promo[0]?.trailer?.embed_url }}"
+                          >Trailer</a
+                        >
+                      </button>
+                    </li>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-right">
+          <label class="header"><h3>Recommadation</h3></label>
+          <div class="card-body top-div">
+            <div class="box" *ngFor="let item of recommadation?.data">
+              <div (click)="getRecomdation(item)" class="row">
+                <div class="col-sm-2">
+                  <a
+                    ><img
+                      src="{{ item?.entry.images.jpg.small_image_url }}"
+                      alt="image"
+                  /></a>
+                </div>
+                <div class="name col-sm-10">
+                  <label class="title">{{ item.entry.title }}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  

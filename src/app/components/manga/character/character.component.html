@@ -1,9 +1,8 @@
 <div class="section">
-    <label class="title">Anime character</label>
+    <label class="title">Manga character</label>
     <div class="main">
-        <div class="row">
-            <div class="col-md-2 mb-1" *ngFor="let item of characterdata?.data">
-                <div class="card">
+        <div class="row poster text-center">
+                <div class="col-md-4 col-sm-4 col-xs-6 card" *ngFor="let item of characterdata?.data">
                     <div class="card-body">
                         <div class="row">
                             <div class="img">
@@ -16,18 +15,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
-    <!-- <div class="main">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card" >
-                    <div class="card-body">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </div>

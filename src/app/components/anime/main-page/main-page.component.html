@@ -1,66 +1,93 @@
 <div class="section">
-    <input class="search" type="text" #search
-        placeholder="           Search for anime"
-        (keypress)="onsearch(search.value)">
     <!-- <button class="btn btn-warning btns" (click)="onsearch(search.value)">
-        </button> -->
-    <header style="color: white;margin:auto">
-        <div class="head">
-            <h1
-                style="margin-left: 45%;padding-top:10px;font-family: 'Courier New', Courier, monospace;">Top
-                Animes</h1>
-            <!-- <button mat-raised-button class="bwl" routerLink="/watchlist-anime">watchlist</button> -->
-        </div>
+          </button> -->
+    <header class="text-center" style="color: white; margin: auto">
+      <div class="head">
+        <input
+          class="search"
+          type="text"
+          #search
+          placeholder="         Search for anime"
+          (keypress)="onsearch(search.value)"
+        />
+        <!-- <button mat-raised-button class="bwl" routerLink="/watchlist-anime">watchlist</button> -->
+      </div>
+      <h1 class="main-heading text-center">Top Animes</h1>
     </header>
     <div class="main" *ngIf="showtop">
-        <div class="search-results"
-            infiniteScroll
-            [infiniteScrollDistance]="2"
-            [infiniteScrollThrottle]="50"
-            (scroll)="onScroll()"
-            [scrollWindow]="true">
-            <div class="row">
-                <div class="col-md-2 mb-1" *ngFor="let item of Topanime?.data; let i=index">
-                    <div class="card">
-                        <div class="card-body">
-                            <a routerLink="/anime/{{item.mal_id}}"><img
-                                    src="{{item.images.jpg.image_url}}" alt></a>
-                            <label for>{{item.title}}</label><br>
-                            <!-- <button class="btn" (click)="addwatchlish(item,item.mal_id,i)" ><mat-icon>bookmark_border</mat-icon><label
-                                    class="hides">Save in wishlist</label></button>
-                            <button class="btn" (click)="removewatchlist(item,item.mal_id)" ><mat-icon>bookmark</mat-icon><label
-                                    class="hider">Remove </label></button> -->
-                        </div>
-                    </div>
-                </div>
+      <div class="search-results">
+        <div class="poster row">
+          <div
+            class="col-lg-2 col-md-4 col-sm-6 col-xs-10 mb-1"
+            *ngFor="let item of Topanime; let i = index"
+          >
+            <div class="card">
+              <div class="card-body">
+                <a routerLink="/anime/{{ item.mal_id }}"
+                  ><img src="{{ item?.images?.jpg?.image_url }}" alt
+                /></a>
+                <label for>{{ item.title_english }}</label
+                ><br />
+                <!-- <button class="btn" (click)="addwatchlish(item,item.mal_id,i)" ><mat-icon>bookmark_border</mat-icon><label
+                                      class="hides">Save in wishlist</label></button>
+                              <button class="btn" (click)="removewatchlist(item,item.mal_id)" ><mat-icon>bookmark</mat-icon><label
+                                      class="hider">Remove </label></button> -->
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-
+  
     <div class="main" *ngIf="showsearch">
-        <div class="row">
-            <div class="col-md-2 mb-1" *ngFor="let element of searchanimeresult let i= index">
-                <div class="card">
-                    <div class="card-body">
-                        <a routerLink="/anime-in-detail/{{element.mal_id}}"><img
-                                src="{{element.images.jpg.image_url}}"
-                                alt></a>
-                        <label for>{{element.title}}</label><br>
-                        <button class="btn" (click)="addwatchlish(element,element.mal_id,i)"><mat-icon>bookmark_border</mat-icon><label
-                                class="hides">Save in wishlist</label></button>
-                        <button class="btn" (click)="removewatchlist(element,element.mal_id)"><mat-icon>bookmark</mat-icon><label
-                                class="hider">Remove </label></button>
-                    </div>
-                </div>
+      <div class="row">
+        <div
+          class="col-md-2 mb-1"
+          *ngFor="let element of searchanimeresult; let i = index"
+        >
+          <div class="card">
+            <div class="card-body">
+              <a routerLink="/anime/{{ element.mal_id }}"
+                ><img src="{{ element.images.jpg.image_url }}" alt
+              /></a>
+              <label for>{{ element.title }}</label
+              ><br />
+              <!-- <button
+                class="btn"
+                (click)="addwatchlish(element, element.mal_id, i)"
+              >
+                <mat-icon>bookmark_border</mat-icon
+                ><label class="hides">Save in wishlist</label>
+              </button>
+              <button
+                class="btn"
+                (click)="removewatchlist(element, element.mal_id)"
+              >
+                <mat-icon>bookmark</mat-icon><label class="hider">Remove </label>
+              </button> -->
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="page">
-        <ul class="pageo">
-            <li class="listo"><button (click)="subpage()" class="btn btnb"
-                    style="margin-left:90%;background-color: white;font-size:20px"><</button></li>
-            <li class="listo"><button (click)="addpage()" class="btn btnn"
-                    style="margin-left: 2%;background-color: white;font-size:20px">></button></li>
-        </ul>
+    <div class="page row p-2">
+      <div class="col-xm-12">
+        <button
+          (click)="subpage()"
+          class="btn btnb"
+          style="background-color: white; font-size: 20px"
+        >
+          <
+        </button>
+  
+        <button
+          (click)="addpage()"
+          class="btn btnn"
+          style="background-color: white; font-size: 20px"
+        >
+          >
+        </button>
+      </div>
     </div>
-</div>
+  </div>
+  

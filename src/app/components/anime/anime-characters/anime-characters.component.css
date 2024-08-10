@@ -19,7 +19,7 @@
 
 .card{
     width: 12rem;
-    margin: 2px;
+    margin: 6px;
     background-color: rgb(70, 66, 66);
     
 }
@@ -31,8 +31,8 @@
 }
 
 .title{
-    margin: 8px auto;
-    margin-left: 40%;
+display: flex;
+justify-content: center;
     font-size: 25px;
     font-family: 'Courier New', Courier, monospace;
     color: aliceblue;
@@ -47,4 +47,19 @@
 .img img{
     width: 100%;
     height: 200px;
+}
+@media (min-width: 200px) and (max-width: 525px) {
+    .main {
+      justify-content: center;
+      width: 100%;
+    }
+    .poster{
+        width: 100%;
+        justify-content: center;
+    }
+    .card{
+        /* width: 12rem; */
+        margin: 2px;
+        background-color: rgb(70, 66, 66);   
+    }
 }

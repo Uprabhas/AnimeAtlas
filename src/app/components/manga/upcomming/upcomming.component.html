@@ -1,18 +1,18 @@
 <div class="section">
     <header style="color: white;margin:auto">
-        <h1 style="margin-left: 45%;">Upcoming Animes</h1>
+        <h1 class="text-center">Upcoming Animes</h1>
     </header>
     <div class="main">
-        <div class="row">
-            <div class="col-md-2 mb-1" *ngFor="let item of upcomingdata?.data">
-                <div class="card">
+        <div class="poster row">
+
+                <div class="col-md-2 col-sm-6 col-xs-8 card" *ngFor="let item of upcomingdata?.data">
                     <div class="card-body">
                         <!-- routerLink="/anime-in-detail/{{item.mal_id}} -->
                         <a  ><img src="{{item.images.jpg.image_url}}" alt=""></a>
                         <label for="">{{item.title}}</label>
                     </div>
                 </div>
-            </div>
+
         </div>
     </div>
 </div>

@@ -8,11 +8,12 @@
 }
 
 .search{
-    position: absolute;
+    position: relative;
     z-index: 99;
     margin-top: -30px;
     font-size: 20px;
-    margin-left: 36%;
+    /* justify-content: center; */
+    /* margin-left: 36%; */
     font-family: young serif;
     padding: 4px;
     border: none;
@@ -60,6 +61,12 @@ border-radius: 8px;
     color: white;
     padding-bottom: 20px;
 }
+
+.page div {
+    display: flex;
+    justify-content: space-between;
+  }
+  
 .listo{
     list-style-type: none;
     display: inline;
@@ -68,3 +75,17 @@ border-radius: 8px;
 .btnp{
     background-color: azure;
 }
+@media (min-width: 200px) and (max-width: 525px) {
+    .poster {
+      justify-content: center;
+      width: 80%;
+    }
+    .search-results {
+      display: flex;
+      justify-content: center;
+    }
+    .page div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }

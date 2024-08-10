@@ -1,6 +1,6 @@
 <div class="main">
     <div class="row">
-        <div class="col-md-8">
+        <div class="card-content col-md-8">
             <div class="card card-left">
                 <div class="row">
                     <div class="col-md-5">
@@ -48,28 +48,22 @@
             </div>
         </div>
         <div class="col-md-4">
-
-
             <div class="card card-right">
                 <label class="header">
                     <h3>Recommadation</h3>
                 </label>
-                <div class="top-div">
-                    <div class="row">
-                        <div class="card-body">
-                            <div class="box" *ngFor="let item of recommdation?.data">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <a (click)="getrecommdationmanga(item.entry.mal_id)"><img
-                                                src="{{item.entry.images.jpg.small_image_url}}" alt="image"></a>
-                                    </div>
-                                    <div class="col-sm-9">
-
-                                        <label>{{item.entry.title}}</label>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card-body top-div">
+                    <div class="box" *ngFor="let item of recommdation?.data">
+                        <div class="row" (click)="getrecommdationmanga(item.entry.mal_id)">
+                        <div class="col-sm-3">
+                            <a ><img
+                                    src="{{item.entry.images.jpg.small_image_url}}" alt="image"></a>
                         </div>
+                        <div class="col-sm-9">
+
+                            <label>{{item.entry.title}}</label>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
