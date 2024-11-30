@@ -3,8 +3,7 @@
 .footer{
     bottom: 0;
     background-color: black;
-    
-    
+    display: grid;
 }
 
 ul{
