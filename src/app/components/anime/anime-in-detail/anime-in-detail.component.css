@@ -23,6 +23,7 @@
   padding: 20px;
   background-image: linear-gradient(to right, #434343 0%, black 100%);
   color: white;
+  height: 500px;
 }
 
 .img {
@@ -66,7 +67,7 @@
   background: #01141e8f;
   /* border: 2px solid #c6dde88f; */
   border-radius: 10px;
-  height: 500px;
+  height: 460px;
 }
 
 .top-div::-webkit-scrollbar {
