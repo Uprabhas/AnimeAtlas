@@ -144,4 +144,8 @@
   .card-content {
     margin: 4px;
   }
+
+  .card-left {
+  height: auto;
+}
 }

@@ -2,32 +2,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Playpen+Sans&display=swap");
 
 .section {
-  /* display: flex; */
+  width: auto;
   background-color: black;
-  width: 100%;
+  width: auto;
+  overflow: hidden;
 }
 
 
 .search {
   position: relative;
-    z-index: 99;
-    /* margin-top: -50px; */
-    font-size: 20px;
-    /* margin-left: 36%; */
-    font-family: young serif;
-    padding: 4px;
-    border: none;
-    border-radius: 6px;
+  z-index: 99;
+  /* margin-top: -50px; */
+  font-size: 20px;
+  /* margin-left: 36%; */
+  font-family: young serif;
+  padding: 4px;
+  border: none;
+  border-radius: 6px;
 }
 
 .btns {
-  position: absolute;
+  /* position: absolute; */
   z-index: 99;
   margin-top: -30px;
   margin-left: 58%;
   padding: -6px;
 }
-.main-heading{
+
+.main-heading {
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -54,6 +56,7 @@
   height: 280px;
   border-radius: 8px;
 }
+
 .btn {
   color: gray;
   border: none;
@@ -69,10 +72,12 @@
   margin-top: -10px;
   margin-left: -70px;
 }
+
 .btn:hover .hides {
   display: block;
   color: white;
 }
+
 .hider {
   padding: 5px;
   position: absolute;
@@ -83,6 +88,7 @@
   display: none;
   margin-left: -60px;
 }
+
 .btn:hover .hider {
   display: block;
   color: white;
@@ -104,10 +110,20 @@
 }
 
 .search-results {
-  height: 80rem;
-  overflow: scroll;
+  /* height: 80rem; */
+  overflow: hidden;
+  overflow-x: none !important;
   scrollbar-width: none;
+  /* width: 95%; */
+  /* scrollbar-width: none; */
   /* scrollbar-track-color: black; */
+}
+
+.poster {
+  overflow-y: hidden;
+  overflow-x: none !important;
+  scrollbar-width: 0px;
+  width: 99%;
 }
 
 @media (min-width: 200px) and (max-width: 525px) {
@@ -115,10 +131,12 @@
     justify-content: center;
     width: 80%;
   }
+
   .search-results {
     display: flex;
     justify-content: center;
   }
+
   .page div {
     display: flex;
     justify-content: space-between;
