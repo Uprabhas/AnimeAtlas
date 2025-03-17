@@ -110,21 +110,19 @@
 }
 
 .search-results {
-  /* height: 80rem; */
-  overflow: hidden;
-  overflow-x: none !important;
+  height: 80rem;
+
   scrollbar-width: none;
-  /* width: 95%; */
-  /* scrollbar-width: none; */
   /* scrollbar-track-color: black; */
+
 }
 
-.poster {
+/* .poster {
   overflow-y: hidden;
   overflow-x: none !important;
   scrollbar-width: 0px;
   width: 99%;
-}
+} */
 
 @media (min-width: 200px) and (max-width: 525px) {
   .poster {
