@@ -15,7 +15,7 @@ export class AnimeInDetailComponent implements OnInit {
   mal_id: any;
   addList: boolean = true
   removelist: boolean = false
-
+  inboundClick = false;
   constructor(private api: ApiService, private activatedrouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
